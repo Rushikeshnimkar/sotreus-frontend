@@ -4,23 +4,21 @@
 
 # Introduction
 
-[Erebrus](https://netsepio.com/) is where decentralization meets VPN for ultimate internet security.
-Anonymous Virtual Private Network for accessing internet in stealth mode bypassing filewalls and filters.
-The Future of the Internet is Decentralized. Be a part of it.
+[Sotreus](https://sotreus.com/) to Bypass restrictions and protect privacy with advanced VPN technology. VPN and Firewall for Unrestricted, Speedy Internet Access.
+
 
 # Features
 
-- Power of Decentralization
-- Fast Speed & Unlimited Bandwidth.
-- IP Address Protection
-- Multiple Devices
-- NFT Subscriptions
+- Explore Without Limits
+- Break Through Barriers
+- Safeguard Your Digital World
+- Innovate with NFT Subscriptions
 
 ## Getting started
 
 To get started, clone the repository and install the dependencies:
 
-git clone [github](https://github.com/NetSepio/erebrus-frontend.git)
+git clone [github](https://github.com/NetSepio/sotreus-frontend.git)
 
 cd app
 
