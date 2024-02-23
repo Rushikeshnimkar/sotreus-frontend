@@ -1,0 +1,369 @@
+"use client";
+import React, { useState } from "react";
+import { saveAs } from "file-saver";
+import { FaDownload, FaQrcode } from "react-icons/fa";
+import axios from "axios";
+import Cookies from "js-cookie";
+import QrCode from "./qrCode";
+import dlt from "../public/dlt.png";
+import Image from "next/image";
+import Link from "next/link";
+const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+
+interface ReviewCardProps {
+  metaData: {
+    UUID: string;
+    name: string;
+    region: string;
+    walletAddress: number;
+  } | null;
+  MyReviews?: boolean;
+  // review?: ReviewCreated;
+  onReviewDeleted?: () => void;
+  onChildValue: (value: string) => void;
+}
+
+const background = {
+  backgroundColor: "#222944",
+};
+
+const color = {
+  color: "#788AA3",
+};
+
+const color2 = {
+  color: "#11D9C5",
+};
+
+const border = {
+  border: "1px solid #11D9C5",
+};
+
+const backgroundbutton = {
+  backgroundColor: "#0162FF",
+};
+
+const handleDownload = async (
+  clientId: string,
+  name: string,
+  region: string
+) => {
+  try {
+    const auth = Cookies.get("erebrus_token");
+
+    const response = await axios.get(
+      `${REACT_APP_GATEWAY_URL}api/v1.0/erebrus/config/${region}/${clientId}`,
+      {
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${auth}`,
+        },
+      }
+    );
+    console.log(response);
+    const config = response.data;
+    const blob = new Blob([config], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, `${name}.conf`);
+  } catch (error) {}
+};
+
+const MyVpnCard: React.FC<ReviewCardProps> = ({
+  metaData,
+  MyReviews = false,
+  onReviewDeleted,
+  onChildValue
+}) => {
+  const [showDescription, setShowDescription] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [delvpn, setdelvpn] = useState(false);
+  const [qr, setqr] = useState(false);
+
+  if (!metaData) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full max-w-sm mx-auto">
+        <div
+          className="w-full h-72 p-5 bg-center bg-cover"
+          style={{ display: "flex", alignItems: "center" }}
+        >
+          <div className="animate-spin rounded-full h-32 w-32 mx-auto border-t-2 border-b-2 border-green-200"></div>
+        </div>
+      </div>
+    );
+  }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleClick = () => {
+    setShowDescription(!showDescription);
+  };
+
+  const handleDelete = () => {
+    if (onReviewDeleted) {
+      onReviewDeleted(); // Call the callback function when a review is deleted
+    }
+  };
+
+  const deletevpn = async (id: string, region: string) => {
+    setLoading(true);
+
+    const auth = Cookies.get("erebrus_token");
+
+    try {
+      const response = await fetch(
+        `${REACT_APP_GATEWAY_URL}api/v1.0/erebrus/client/${region}/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${auth}`,
+          },
+        }
+      );
+
+      console.log(response);
+
+      if (response.status === 200) {
+        console.log("success");
+        setdelvpn(false);
+        onChildValue("refreshdataafterdelete");
+      } else {
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="w-full">
+      <div
+        className="w-full h-full lg:px-10 md:px-10 lg:py-4 md:py-4 p-4 border-t border-gray-500"
+        style={{ backgroundColor: "#202333" }}
+      >
+        <div className="w-full px-4 flex justify-between">
+          <div className="text-l leading-12 font-bold mb-2 text-white w-1/4">
+            <div className="flex">
+              <div>
+                {metaData.UUID.slice(0, 4)}...{metaData.UUID.slice(-4)}
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:flex md:flex justify-between w-1/4">
+            <div>
+              <div className="text-lg rounded-lg pr-1 text-white">
+                <div>{metaData.name}</div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-white text-lg w-1/4 btn bg-blue-gray-700 text-center">
+            <div className="">
+              <div>
+                <div>
+                  {metaData.region}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex gap-4 w-1/4 justify-end">
+            {/* <button
+              className="text-lg rounded-lg text-white flex btn bg-blue-gray-700"
+              onClick={() =>
+                handleDownload(metaData.UUID, metaData.name, metaData.region)
+              }
+            >
+              <div className="flex cursor-pointer">
+                <FaDownload style={color2} className="mt-2" />
+              </div>
+            </button>
+            <button
+              onClick={() => {
+                setqr(true);
+              }}
+            >
+              <FaQrcode style={color2} className="mt-1" />
+            </button> */}
+            <button
+              className="text-lg rounded-lg"
+              onClick={() => setdelvpn(true)}
+            >
+              <Image src={dlt} alt="info" className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* <div className="text-white text-lg w-1/4 btn bg-blue-gray-700">
+                      <div className="ml-4">
+
+                        <div className="flex cursor-pointer" onClick={() => {
+
+                        }}>
+                       <button onClick={()=>{setqr(true)}}>
+                          <FaQrcode style={color2} className="ml-2 mt-1"/>
+                       </button>
+                          </div>  
+                      </div>
+                    
+                  </div>
+
+                  <div className="lg:flex md:flex justify-between w-1/8">
+                  <div
+                    
+                  > 
+                    <button className="text-lg rounded-lg pr-1 text-white" onClick={() => deletevpn(metaData.vpn_id)}>  
+                    <Image src={dlt} alt="info" className="w-4 h-4"/>
+                    </button>    
+                  </div>
+              </div> */}
+        </div>
+      </div>
+      {qr && (
+        <div
+          style={{ backgroundColor: "#222944E5" }}
+          className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full"
+          id="popupmodal"
+        >
+          <div className="relative lg:w-1/3 w-full max-w-2xl max-h-full">
+            <div
+              className="relative rounded-lg shadow dark:bg-gray-700 p-6"
+              style={{ backgroundColor: "#445088" }}
+            >
+              <div className="p-4 md:p-5 flex">
+                <p className="text-2xl text-center text-white">Scan QR Code</p>
+                <button
+                  onClick={() => setqr(false)}
+                  type="button"
+                  className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                >
+                  <svg
+                    className="w-3 h-3"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 14 14"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                    />
+                  </svg>
+                  <span className="sr-only">Close modal</span>
+                </button>
+              </div>
+              <QrCode
+                clientId={metaData.UUID}
+                name={metaData.name}
+                region={metaData.region}
+              />
+              <div className="text-gray-300 mb-4">
+                On your mobile, open the WireGuard app, and use the option to
+                add a new connection by scanning a QR code. After scanning, the
+                app will import the configuration. You can then connect to
+                Erebrus VPN through the WireGuard app.
+              </div>
+              <Link
+                href="https://www.wireguard.com/"
+                target="_blank"
+                className="text-green-500 font-bold px-4 rounded-lg pb-2 pt-1"
+                style={{ border: "1px solid white" }}
+              >
+                Wireguard
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {delvpn && (
+        <div
+          style={{ backgroundColor: "#222944E5" }}
+          className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full"
+          id="popupmodal"
+        >
+          <div className="relative lg:w-1/3 w-full max-w-2xl max-h-full">
+            <div
+              className="relative rounded-3xl shadow dark:bg-gray-700 p-16 md:p-20"
+              style={{ backgroundColor: "#202333", border: "1px solid #0162FF"}}
+            >
+              <div className="p-4 md:p-5 space-y-4">
+                <p className="text-4xl text-center text-white font-bold">
+                  Are you sure?
+                </p>
+              </div>
+              <div className="p-4 md:p-5 space-y-4">
+                <p className="text-md text-center" style={color}>
+                  Do you really want to delete this client? This process can not
+                  be undone.
+                </p>
+              </div>
+              <div className="flex items-center p-4 md:p-5 rounded-b gap-4">
+                <button
+                  style={{ border: "1px solid #5696FF", color: "#5696FF" }}
+                  onClick={() => setdelvpn(false)}
+                  type="button"
+                  className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  style={backgroundbutton}
+                  onClick={() => deletevpn(metaData.UUID, metaData.region)}
+                  type="button"
+                  className="w-full text-white font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            top: 700,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 9999,
+            }}
+          >
+            <div
+              style={{
+                border: "8px solid #f3f3f3",
+                borderTop: "8px solid #3498db",
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                animation: "spin 1s linear infinite",
+              }}
+            >
+              {/* <Loader/> */}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MyVpnCard;
