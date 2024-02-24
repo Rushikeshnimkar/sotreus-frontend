@@ -16,7 +16,7 @@ export const QrCode: React.FC<QrCodeProps> = ({ clientId, name, region }) => {
 
   const handleQrCode = async (clientId: string, name: string, region: string) => {
     try {
-      const auth = Cookies.get("erebrus_token");
+      const auth = Cookies.get("sotreus_token");
   
       const response = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/erebrus/config/${region}/${clientId}`, {
         headers: {

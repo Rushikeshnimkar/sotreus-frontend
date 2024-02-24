@@ -62,13 +62,13 @@ const Navbar = ({ isHome }) => {
 
   console.log("account details", account);
 
-  const address = Cookies.get("erebrus_wallet");
-  const token = Cookies.get("erebrus_token");
+  const address = Cookies.get("sotreus_wallet");
+  const token = Cookies.get("sotreus_token");
 
   useEffect(() => {
     if (account && account.address) {
       // Update the cookie with the new address
-      Cookies.set("erebrus_wallet", account.address);
+      Cookies.set("sotreus_wallet", account.address);
       // onSignMessage();
     }
   }, [account?.address]);
@@ -246,9 +246,9 @@ const Navbar = ({ isHome }) => {
         const token = await response?.data?.payload?.token;
         const userId = await response?.data?.payload?.userId;
         // localStorage.setItem("platform_token", token);
-        Cookies.set("erebrus_token", token, { expires: 7 });
-        Cookies.set("erebrus_wallet", account.address, { expires: 7 });
-        Cookies.set("erebrus_userid", userId, { expires: 7 });
+        Cookies.set("sotreus_token", token, { expires: 7 });
+        Cookies.set("sotreus_wallet", account.address, { expires: 7 });
+        Cookies.set("sotreus_userid", userId, { expires: 7 });
 
         // setUserWallet(account.address);
         window.location.reload();
@@ -314,9 +314,9 @@ const Navbar = ({ isHome }) => {
         const token = await authResponse?.data?.payload?.token;
         const userId = await authResponse?.data?.payload?.userId;
   
-        Cookies.set("erebrus_token", token, { expires: 7 });
-        Cookies.set("erebrus_wallet", account?.address ?? '', { expires: 7 });
-        Cookies.set("erebrus_userid", userId, { expires: 7 });
+        Cookies.set("sotreus_token", token, { expires: 7 });
+        Cookies.set("sotreus_wallet", account?.address ?? '', { expires: 7 });
+        Cookies.set("sotreus_userid", userId, { expires: 7 });
   
         window.location.reload();
       } catch (error) {
@@ -330,8 +330,8 @@ const Navbar = ({ isHome }) => {
   
 
   const handleDeleteCookie = () => {
-    Cookies.remove("erebrus_wallet");
-    Cookies.remove("erebrus_token");
+    Cookies.remove("sotreus_wallet");
+    Cookies.remove("sotreus_token");
     window.location.href = "/";
   };
 

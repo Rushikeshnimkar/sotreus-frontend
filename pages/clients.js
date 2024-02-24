@@ -21,7 +21,7 @@ const Clients = () => {
   const [apiData1, setApiData1] = useState(null);
   const [apiData2, setApiData2] = useState(null);
   const [isLoading1, setIsLoading1] = useState(false);
-  const isSignedIn = Cookies.get("erebrus_wallet");
+  const isSignedIn = Cookies.get("sotreus_wallet");
 
   useEffect(() => {
     if (address) {

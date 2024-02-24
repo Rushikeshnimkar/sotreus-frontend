@@ -62,8 +62,8 @@ const Mint = () => {
 
   const [isLoadingTx, setLoadingTx] = useState(false);
   const [error, setError] = useState(null);
-  const isSignedIn = Cookies.get("erebrus_wallet");
-  const isauthenticate = Cookies.get("erebrus_token");
+  const isSignedIn = Cookies.get("sotreus_wallet");
+  const isauthenticate = Cookies.get("sotreus_token");
   const [address, setAddress] = useState("");
   const [token, settoken] = useState("");
   const [wallet, setwallet] = useState("");
@@ -168,9 +168,9 @@ const Mint = () => {
 
           settoken(token), setwallet(account.address), setuserid(userId);
 
-          Cookies.set("erebrus_token", token, { expires: 7 });
-          Cookies.set("erebrus_wallet", account.address, { expires: 7 });
-          Cookies.set("erebrus_userid", userId, { expires: 7 });
+          Cookies.set("sotreus_token", token, { expires: 7 });
+          Cookies.set("sotreus_wallet", account.address, { expires: 7 });
+          Cookies.set("sotreus_userid", userId, { expires: 7 });
 
           // await mint();
         } catch (error) {
@@ -252,7 +252,7 @@ const Mint = () => {
     // }
     setbuttonblur(true);
 
-    const auth = Cookies.get("erebrus_token");
+    const auth = Cookies.get("sotreus_token");
     const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
 
     try {
@@ -348,9 +348,9 @@ const Mint = () => {
         const token = await authResponse?.data?.payload?.token;
         const userId = await authResponse?.data?.payload?.userId;
 
-        Cookies.set("erebrus_token", token, { expires: 7 });
-        Cookies.set("erebrus_wallet", account?.address ?? "", { expires: 7 });
-        Cookies.set("erebrus_userid", userId, { expires: 7 });
+        Cookies.set("sotreus_token", token, { expires: 7 });
+        Cookies.set("sotreus_wallet", account?.address ?? "", { expires: 7 });
+        Cookies.set("sotreus_userid", userId, { expires: 7 });
 
         window.location.reload();
       } catch (error) {

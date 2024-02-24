@@ -94,9 +94,9 @@ export default function SingleSignerTransaction({
       const token = await response?.data?.payload?.token;
       const userId = await response?.data?.payload?.userId;
           // localStorage.setItem("platform_token", token);
-          Cookies.set("erebrus_token", token, { expires: 7 });
-          Cookies.set("erebrus_wallet", account?.address ?? '', { expires: 7 });
-          Cookies.set("erebrus_userid", userId, { expires: 7 });
+          Cookies.set("sotreus_token", token, { expires: 7 });
+          Cookies.set("sotreus_wallet", account?.address ?? '', { expires: 7 });
+          Cookies.set("sotreus_userid", userId, { expires: 7 });
 
           window.location.reload();
 

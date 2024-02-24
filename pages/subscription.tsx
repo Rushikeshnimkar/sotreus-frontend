@@ -174,13 +174,13 @@ const Subscription = () => {
 
     setLoading(true);
 
-    const auth = Cookies.get("erebrus_token");
+    const auth = Cookies.get("sotreus_token");
     console.log("clicked");
     try {
       const formDataObj = new FormData();
       formDataObj.append("name", formData.name);
-      // formDataObj.append("region", formData.region);
-      formDataObj.append("collectionId", valueFromChild2);
+      formDataObj.append("region", formData.region);
+      formDataObj.append("password", "jSDCj");
 
       // Convert FormData to JavaScript Object
       const formDataObject: { [key: string]: string | File | null } = {};
@@ -193,7 +193,7 @@ const Subscription = () => {
 
       // console.log(formData.type);
       // if (formData.type === "dedicated") {
-        const response = await fetch(`${REACT_APP_GATEWAY_URL}api/v1.0/vpn/${formData.region}`, {
+        const response = await fetch(`${REACT_APP_GATEWAY_URL}api/v1.0/vpn`, {
           method: "POST",
           headers: {
             Accept: "application/json, text/plain, */*",
@@ -267,7 +267,7 @@ const Subscription = () => {
     const fetchProjectsData = async () => {
       setLoading(true);
       try {
-        const auth = Cookies.get("erebrus_token");
+        const auth = Cookies.get("sotreus_token");
 
         const response = await axios.get(
           `${REACT_APP_GATEWAY_URL}api/v1.0/erebrus/clients?region=${region}&collection_id=${collectionId}`,
@@ -284,7 +284,7 @@ const Subscription = () => {
 
         if (response.status === 200) {
           // Filter the data based on the domain ID
-          const wallet = Cookies.get("erebrus_wallet");
+          const wallet = Cookies.get("sotreus_wallet");
           const payload: any[] = response.data.payload;
           const filteredData = payload.filter(
             (item) => item?.walletAddress === wallet
@@ -338,7 +338,7 @@ const Subscription = () => {
     const vpnnft = async () => {
       setLoading(true);
       try {
-        const auth = Cookies.get("erebrus_token");
+        const auth = Cookies.get("sotreus_token");
 
         const graphqlbody = {
           query: `
@@ -441,8 +441,8 @@ const Subscription = () => {
     setregion(e.target.value);
   };
 
-  const loggedin = Cookies.get("erebrus_token");
-  const wallet = Cookies.get("erebrus_wallet");
+  const loggedin = Cookies.get("sotreus_token");
+  const wallet = Cookies.get("sotreus_wallet");
 
   const getAptosWallet = () => {
     if ("aptos" in window) {
@@ -509,9 +509,9 @@ const Subscription = () => {
           const token = await response?.data?.payload?.token;
           const userId = await response?.data?.payload?.userId;
 
-          Cookies.set("erebrus_token", token, { expires: 7 });
-          Cookies.set("erebrus_wallet", account.address, { expires: 7 });
-          Cookies.set("erebrus_userid", userId, { expires: 7 });
+          Cookies.set("sotreus_token", token, { expires: 7 });
+          Cookies.set("sotreus_wallet", account.address, { expires: 7 });
+          Cookies.set("sotreus_userid", userId, { expires: 7 });
 
           window.location.reload();
         } catch (error) {
@@ -575,9 +575,9 @@ const Subscription = () => {
         const token = await authResponse?.data?.payload?.token;
         const userId = await authResponse?.data?.payload?.userId;
 
-        Cookies.set("erebrus_token", token, { expires: 7 });
-        Cookies.set("erebrus_wallet", account?.address ?? "", { expires: 7 });
-        Cookies.set("erebrus_userid", userId, { expires: 7 });
+        Cookies.set("sotreus_token", token, { expires: 7 });
+        Cookies.set("sotreus_wallet", account?.address ?? "", { expires: 7 });
+        Cookies.set("sotreus_userid", userId, { expires: 7 });
 
         window.location.reload();
       } catch (error) {
@@ -866,9 +866,9 @@ const Subscription = () => {
                                             </option>
                                             <option
                                               className="bg-white text-black"
-                                              value="us"
+                                              value="us02"
                                             >
-                                              US
+                                              US02
                                             </option>
                                             <option
                                               className="bg-white text-black"
