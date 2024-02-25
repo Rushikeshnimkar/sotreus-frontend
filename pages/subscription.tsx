@@ -1033,13 +1033,14 @@ const Subscription = () => {
 
                               <div className="text-center text-white text-sm w-2/3 mt-2">
                                 Open{" "}
-                                <Link
+                                <a
                                   href="https://www.wireguard.com/"
                                   target="_blank"
+                                  rel="noreferrer"
                                   style={{ color: "#5696FF" }}
                                 >
                                   WireGaurd
-                                </Link>
+                                </a>
                                 &nbsp;app on mobile, scan the QR code to add a
                                 new connection, and instantly connect to Erebrus
                                 VPN.
@@ -1286,12 +1287,13 @@ const Subscription = () => {
                                     className="py-2 px-10 text-white rounded-full"
                                     style={{ backgroundColor: "#0162FF" }}
                                   >
-                                    <Link
+                                    <a
                                       href="https://www.wireguard.com/"
                                       target="_blank"
+                                      rel="noreferrer"
                                     >
                                       Download
-                                    </Link>
+                                    </a>
                                   </button>
                                 </div>
                               )}

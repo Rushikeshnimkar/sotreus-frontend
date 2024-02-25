@@ -142,14 +142,14 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                     
                   > 
                     <button className="text-lg rounded-lg pr-1 text-white">
-                       <a href={`https://${metaData.vpn_endpoint}`} target="_blank" style={color2}>
+                       <a href={`https://${metaData.vpn_endpoint}`} target="_blank" rel="noreferrer" style={color2}>
                        Link</a>
                     </button>    
                   </div>
               </div>
                   
               <button className="text-lg rounded-lg pr-1 text-white flex w-1/4 pl-14">
-                       <a href={`https://${metaData.firewall_endpoint}`} target="_blank" style={color2}>
+                       <a href={`https://${metaData.firewall_endpoint}`} target="_blank" rel="noreferrer" style={color2}>
                           Link</a>
                     </button> 
 
