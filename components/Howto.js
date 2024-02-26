@@ -15,7 +15,7 @@ const Howto = () => {
         </h1>
         <div className="flex flex-col items-center justify-center gap-10">
           <div className="flex flex-row py-10 px-10 rounded-3xl gap-4" style={{backgroundColor:'#29ADB2'}}>
-          <div className="w-1/2">
+          <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
               <div className="flex items-center">
               Comprehensive Functionality
@@ -37,7 +37,7 @@ simplifying VPN operations.
             </div>
           </div>
           <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#9ED2BE'}}>
-          <div className="w-1/2">
+          <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
             Easy Integration
             </h2>
@@ -53,7 +53,7 @@ with ease.
           </div>
           
           <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#164B60'}}>
-          <div className="w-1/2">
+          <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
             Flexible Deployment
             </h2>
@@ -68,7 +68,7 @@ URLs depending on the desired environment.
           </div>
 
           <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl" style={{backgroundColor:'#1B6B93'}}>
-          <div className="w-1/2">
+          <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
             Security and Privacy
             </h2>

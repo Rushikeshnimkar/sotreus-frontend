@@ -15,7 +15,10 @@ const Footer = () => {
           
           <div className="w-1/3">
           <div className="text-white">
+            <div className="flex">
             <img src="/favicon.ico" alt="Logo" className="" />
+            <img src="/sotreus.png" alt="Logo" className="w-20 h-8 ml-2 mt-1" />
+            </div>
             <div className="mt-4 text-sm text-gray-400">
               Sotreus is a fast and easy-to-use VPN service 
 that protects internet activities from cyber threats 
@@ -100,7 +103,7 @@ and surveillance.</div>
           <p className="order-2 sm:order-1">
           Sotreus 2024 &copy; All rights reserved.
           </p>
-          <div className="flex items-center order-1 sm:order-2 text-white lg:mr-14 md:mr-14">
+          <div className="flex items-center order-1 sm:order-2 text-white lg:mr-8 md:mr-8">
             <p>Contact us on</p>
             <Link
               href="https://discord.com/invite/5uaFhNpRF6"
