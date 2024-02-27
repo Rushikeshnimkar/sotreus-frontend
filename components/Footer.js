@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="text-white">
             <div className="flex">
             <img src="/favicon.ico" alt="Logo" className="" />
-            <img src="/sotreus.png" alt="Logo" className="w-20 h-8 ml-2 mt-1" />
+            <img src="/Sotreus.png" alt="Logo" className="w-20 h-8 ml-2 mt-1" />
             </div>
             <div className="mt-4 text-sm text-gray-400">
               Sotreus is a fast and easy-to-use VPN service 

@@ -349,7 +349,7 @@ const Navbar = ({ isHome }) => {
             </div>
           </Link>
           <Link href="/" scroll={false}>
-          <img src="/sotreus.png" alt="Logo" className="w-20 h-8 ml-2" />
+          <img src="/Sotreus.png" alt="Logo" className="w-20 h-8 ml-2" />
           </Link>
         </div>
         <div className="hidden lg:flex items-center">
