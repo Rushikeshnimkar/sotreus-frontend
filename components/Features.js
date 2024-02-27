@@ -53,8 +53,8 @@ const Features = () => {
           variants={itemVariants}
           className="flex lg:mb-12 lg:flex-row flex-col justify-center items-start gap-4"
         >
-          <div className="lg:w-[50%] pt-32 pb-12 px-6 rounded-2xl text-black" style={{backgroundColor: '#4FC0D0'}}>
-            <div className="text-4xl rounded-full w-20 h-20"><img src="/Search_fill.png" className="w-20 mx-auto"/></div>
+          <div className="lg:w-[50%] pt-32 pb-12 px-6 rounded-2xl text-black" style={{backgroundColor: '#00C0F5'}}>
+            <div className="text-4xl rounded-full w-20 h-20 bg-black"><img src="/Search_fill.png" className="w-20 mx-auto"/></div>
             <div className="flex flex-col mt-2 pb-4">
               <motion.h1 className="font-bold text-3xl">
               Explore Without Limits
@@ -65,8 +65,8 @@ safeguarding your data from threats anywhere.
               </motion.p>
             </div>
           </div>
-          <div className="lg:w-[50%] pt-28 pb-12 px-6 rounded-2xl text-black" style={{backgroundColor: '#9BE8D8'}}>
-          <div className="text-4xl rounded-full w-20 h-20"><img src="/Unlock_fill.png" className="w-16 mx-auto pt-4"/></div>
+          <div className="lg:w-[50%] pt-28 pb-12 px-6 rounded-2xl text-black" style={{backgroundColor: '#FFFFFF'}}>
+          <div className="text-4xl rounded-full w-20 h-20 bg-black"><img src="/Unlock_fill.png" className="w-16 mx-auto pt-4"/></div>
             <div className="flex flex-col mt-4">
               <motion.h1 className="font-bold text-3xl">
               Break Through Barriers
@@ -86,8 +86,8 @@ limitations seamlessly from home or office.
           variants={itemVariants}
           className="flex lg:flex-row flex-col justify-center items-start lg:mb-12 gap-4"
         >
-          <div className="lg:w-[50%] pt-32 pb-10 px-6 rounded-2xl text-white" style={{backgroundColor: '#164B60'}}>
-          <div className="text-4xl rounded-full w-20 h-20"><img src="/Chield_check_fill.png" className="w-20 mx-auto pt-4"/></div>
+          <div className="lg:w-[50%] pt-32 pb-10 px-6 rounded-2xl text-white" style={{backgroundColor: '#0090B8'}}>
+          <div className="text-4xl rounded-full w-20 h-20 bg-white"><img src="/Chield_check_fill.png" className="w-20 mx-auto pt-4"/></div>
             <div className="flex flex-col mt-4">
               <motion.h1 className="font-bold text-3xl">
               Safeguard Your Digital World
@@ -99,8 +99,8 @@ storage and computing.
               </motion.p>
             </div>
           </div>
-          <div className="lg:w-[50%] pt-32 pb-10 px-6 rounded-2xl text-white" style={{backgroundColor: '#1B6B93'}}>
-          <div className="text-4xl rounded-full w-20 h-20"><img src="/Img_box_fill.png" className="w-16 mx-auto pt-4"/></div>
+          <div className="lg:w-[50%] pt-32 pb-10 px-6 rounded-2xl text-white" style={{backgroundColor: '#004052'}}>
+          <div className="text-4xl rounded-full w-20 h-20 bg-white"><img src="/Img_box_fill.png" className="w-16 mx-auto pt-4"/></div>
             <div className="flex flex-col mt-4">
               <motion.h1 className="font-bold text-3xl">
               Innovate with NFT <br></br>

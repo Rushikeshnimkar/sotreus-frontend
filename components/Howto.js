@@ -14,7 +14,7 @@ const Howto = () => {
         Discover Sotreus Unmatched Features
         </h1>
         <div className="flex flex-col items-center justify-center gap-10">
-          <div className="flex flex-row py-10 px-10 rounded-3xl gap-4" style={{backgroundColor:'#29ADB2'}}>
+          <div className="flex flex-row py-10 px-10 rounded-3xl gap-4" style={{backgroundColor:'#00C0F5'}}>
           <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
               <div className="flex items-center">
@@ -36,12 +36,12 @@ simplifying VPN operations.
             {/* </Link> */}
             </div>
           </div>
-          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#9ED2BE'}}>
+          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#FFFFFF'}}>
           <div className="w-1/2 my-auto">
-            <h2 className="text-white lg:text-2xl text-xl font-bold">
+            <h2 className="text-black lg:text-2xl text-xl font-bold">
             Easy Integration
             </h2>
-            <p className="text-white text-sm mt-4">
+            <p className="text-black text-sm mt-4">
             Work seamlessly with WireGuard VPN services, allowing users 
 to integrate and manage their VPN networks 
 with ease.
@@ -52,7 +52,7 @@ with ease.
           </div>
           </div>
           
-          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#164B60'}}>
+          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl w-[100%]" style={{backgroundColor:'#0090B8'}}>
           <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
             Flexible Deployment
@@ -67,7 +67,7 @@ URLs depending on the desired environment.
           </div>
           </div>
 
-          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl" style={{backgroundColor:'#1B6B93'}}>
+          <div className="flex flex-row gap-4 py-10 px-10 rounded-3xl" style={{backgroundColor:'#004052'}}>
           <div className="w-1/2 my-auto">
             <h2 className="text-white lg:text-2xl text-xl font-bold">
             Security and Privacy

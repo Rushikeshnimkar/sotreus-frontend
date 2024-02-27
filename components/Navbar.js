@@ -353,7 +353,7 @@ const Navbar = ({ isHome }) => {
           </Link>
         </div>
         <div className="hidden lg:flex items-center">
-        { link !== "mint" ?(
+        {/* { link !== "mint" ?(
           <Link
             href="/mint"
             className="text-gray-300 mr-8"
@@ -376,7 +376,7 @@ const Navbar = ({ isHome }) => {
           >
             Mint NFT
           </Link>
-          )}
+          )} */}
           {/* <Link href="/demo" className="text-gray-300 mr-8">
             Demo
           </Link>

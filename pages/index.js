@@ -22,8 +22,8 @@ Anonymous Virtual Private Network for accessing internet in stealth mode bypassi
         <title>Sotreus</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div style={{backgroundImage: 'radial-gradient(ellipse at top left, #040819 20%, #75E2FF, #244D617D)'}} className="py-32">
-      <div className="container mx-auto py-10">
+      <div style={{backgroundImage: 'radial-gradient(ellipse at top left, #040819 25%, #75E2FF, #244D617D)'}} className="py-32">
+      <div className="container mx-auto pb-20 pt-10">
         <div className="flex flex-col items-center justify-start lg:h-full md:mt-16 mt-8 lg:ml-0 lg:mr-0 md:ml-0 md:mr-0 ml-4 mr-4 mb-36 lg:mb-0 ">
           <motion.h1
             initial={{ y: 100, opacity: 0 }}
@@ -46,9 +46,9 @@ Speedy Internet Access
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1, transition: { duration: 1 } }}
             className="text-black font-bold py-3 px-14 rounded-full bg-white" 
-            style={{backgroundImage: 'linear-gradient(#FFFFFF00, #0099FF)'}}
+            style={{backgroundImage: 'linear-gradient(#FFFFFF00, #62CDFF)'}}
           >
-            <Link href="/mint">
+            <Link href="/subscription">
               Subscribe Now
             </Link>
           </motion.div>

@@ -525,7 +525,7 @@ const Mint = () => {
                               </button>
                             </div>
 
-                            <div className="items-center pt-20 rounded-b w-1/2 mx-auto">
+                            {/* <div className="items-center pt-20 rounded-b w-1/2 mx-auto">
                             {!connected ? (
                               <>
                               <button
@@ -555,9 +555,9 @@ const Mint = () => {
                               </button>
                         )}
                               
-                            </div>
+                            </div> */}
 
-                            {/* { !showconnectbutton && (<div className="flex items-center pb-20 pt-10 rounded-b w-1/2 mx-auto">
+                            { !showconnectbutton && (<div className="flex items-center pb-20 pt-10 rounded-b w-1/2 mx-auto">
                               <button
                                 onClick={stripe}
                                 style={{ border: "1px solid #0162FF" }}
@@ -567,7 +567,7 @@ const Mint = () => {
                                 <img src="/mint3.png" className="w-12"/>
                                 <div className="px-5 py-2.5 ">Pay in USD</div>
                               </button>
-                            </div>)} */}
+                            </div>)}
                           </div>
                           <img src="/coin2.png" className="w-60 -mt-10 absolute -bottom-24 -right-24" style={{ zIndex: -1 }}/>
                         </div>
