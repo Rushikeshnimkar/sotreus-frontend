@@ -5,9 +5,10 @@ import MyVpnCardDedicated from './MyvpncardDedicated';
 interface MyReviewContainerProps {
   metaDataArray: any[];
   MyReviews?: boolean;
+  onChildValue: (value: string) => void;
 }
 
-const VpnContainerDedicated: React.FC<MyReviewContainerProps> = ({ metaDataArray, MyReviews = false }) => {
+const VpnContainerDedicated: React.FC<MyReviewContainerProps> = ({ metaDataArray, MyReviews = false, onChildValue }) => {
 
   const handleReviewDeleted = () => {
     window.location.reload();
@@ -40,6 +41,7 @@ const VpnContainerDedicated: React.FC<MyReviewContainerProps> = ({ metaDataArray
                   metaData={metaData}
                   MyReviews={MyReviews}
                   onReviewDeleted={handleReviewDeleted}
+                  onChildValue={onChildValue}
                 />
               </div>
             ))}

@@ -11,18 +11,20 @@ const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
 
 interface ReviewCardProps {
   metaData: {
-    vpn_id: string;
-    vpn_endpoint: string;
-    firewall_endpoint: string;
+    name: string;
+    VpnEndpoint: string;
+    firewallEndpoint: string;
     vpn_api_port: number;
     vpn_external_port: number;
-    dashboard_password: string;
+    password: string;
+    region: string;
     status: string;
     ID: number;
   } | null;
   MyReviews?: boolean;
   // review?: ReviewCreated;
   onReviewDeleted?: () => void;
+  onChildValue: (value: string) => void;
 }
 
 const background = {
@@ -49,6 +51,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
   metaData,
   MyReviews = false,
   onReviewDeleted,
+  onChildValue
 }) => {
   const [showDescription, setShowDescription] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -89,14 +92,14 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
   const deletevpn = async (id: string) => {
     setLoading(true);
 
-    const auth = Cookies.get("platform_token");
+    const auth = Cookies.get("sotreus_token");
 
     const jsonData = {
       "vpnId":id
     }
 
     try {
-      const response = await fetch(`${REACT_APP_GATEWAY_URL}api/v1.0/vpn`, {
+      const response = await fetch(`${REACT_APP_GATEWAY_URL}api/v1.0/vpn?id=${metaData.name}`, {
         method: 'DELETE',
         headers: {
           Accept: "application/json, text/plain, */*",
@@ -108,7 +111,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
       if (response.status === 200) {
         console.log("success")
-        window.location.reload();
+        onChildValue("refreshdataafterdelete");
       } else {
       }
     } catch (error) {
@@ -133,23 +136,27 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                     
                   >
                     <div className="flex text-lg">
-                      <div>{metaData.vpn_id}</div>
+                      <div>{metaData.name}</div>
                     </div>
                   </h3>
+
+                  {/* <div className="flex text-lg">
+                      <div>{metaData.region}</div>
+                    </div> */}
 
                   <div className="lg:flex md:flex justify-between w-1/4 pl-10">
                   <div
                     
                   > 
                     <button className="text-lg rounded-lg pr-1 text-white">
-                       <a href={`https://${metaData.vpn_endpoint}`} target="_blank" rel="noreferrer" style={color2}>
+                       <a href={`https://${metaData.VpnEndpoint}`} target="_blank" rel="noreferrer" style={color2}>
                        Link</a>
                     </button>    
                   </div>
               </div>
                   
               <button className="text-lg rounded-lg pr-1 text-white flex w-1/4 pl-14">
-                       <a href={`https://${metaData.firewall_endpoint}`} target="_blank" rel="noreferrer" style={color2}>
+                       <a href={`https://${metaData.firewallEndpoint}`} target="_blank" rel="noreferrer" style={color2}>
                           Link</a>
                     </button> 
 
@@ -165,10 +172,10 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
                         <div className="flex cursor-pointer" onClick={() => {
                           navigator.clipboard.writeText(
-                            metaData? metaData.dashboard_password : ''
+                            metaData? metaData.password : ''
                           );
                         }}>
-                          {metaData.dashboard_password}
+                          {metaData.password}
                           <FaCopy style={color2} className="ml-2 mt-1"/>
                           </div>
                       ) : (
@@ -183,7 +190,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                   <div
                     
                   > 
-                    <button className="text-lg rounded-lg pr-1 text-white" onClick={() => deletevpn(metaData.vpn_id)}>  
+                    <button className="text-lg rounded-lg pr-1 text-white" onClick={() => deletevpn(metaData.name)}>  
                     <Image src={dlt} alt="info" className="w-4 h-4"/>
                     </button>    
                   </div>

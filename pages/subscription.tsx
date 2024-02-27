@@ -303,10 +303,10 @@ const Subscription = () => {
     const fetchVpnDedicated = async () => {
       setLoading(true);
       try {
-        const auth = Cookies.get("platform_token");
+        const auth = Cookies.get("sotreus_token");
 
         const response = await axios.get(
-          `${REACT_APP_GATEWAY_URL}api/v1.0/vpn/all/${region}`,
+          `${REACT_APP_GATEWAY_URL}api/v1.0/vpn`,
           {
             headers: {
               Accept: "application/json, text/plain, */*",
@@ -320,13 +320,13 @@ const Subscription = () => {
 
         if (response.status === 200) {
           // Filter the data based on the domain ID
-          const wallet = Cookies.get("platform_wallet");
+          const wallet = Cookies.get("sotreus_wallet");
           const payload: any[] = response.data.payload;
           const filteredData = payload.filter(
             (item) => item?.walletAddress === wallet
           );
           setdedicatedVpnData(filteredData);
-          console.log("dedicated", filteredData);
+          console.log("dedicated", response);
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -1134,9 +1134,7 @@ const Subscription = () => {
                           loading ? (
                             // <Loader />
                             <div className="min-h-screen"></div>
-                          ) : projectsData && projectsData?.length !== 0 ? (
-                            // (!dedicatedVpnData ||
-                            //   dedicatedVpnData?.length == 0) && (
+                          ) : dedicatedVpnData && dedicatedVpnData?.length !== 0 ? (
                             <div className="mx-6 -mt-20">
                               <div className="flex gap-4">
                                 <div className="ml-auto text-white">
@@ -1153,39 +1151,9 @@ const Subscription = () => {
                                 </div>
                               </div>
 
-                              {/* {vpntype === "decentralized" && (
-                            <> */}
                               <div
                                 className="w-full h-full rounded-xl mt-14 pb-2"
-                                style={bg}
                               >
-                                <div className="w-full flex justify-between px-14 p-4">
-                                  <h3 className="text-lg leading-12 w-1/4 text-left">
-                                    <div style={text}>Id</div>
-                                  </h3>
-
-                                  <div className="text-start w-1/4">
-                                    <div>
-                                      <div className="text-lg " style={text}>
-                                        Name
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div
-                                    className="text-lg text-center w-1/4"
-                                    style={text}
-                                  >
-                                    Region
-                                  </div>
-
-                                  <div
-                                    className="text-lg flex w-1/4 justify-end"
-                                    style={text}
-                                  >
-                                    <p>Actions</p>
-                                  </div>
-                                </div>
                                 <MyVpnContainer
                                   metaDataArray={projectsData}
                                   MyReviews={false}
@@ -1239,6 +1207,7 @@ const Subscription = () => {
                                 <VpnContainerDedicated
                                 metaDataArray={dedicatedVpnData}
                                 MyReviews={false}
+                                onChildValue={handleChildValue}
                               />
                               </div>
 
