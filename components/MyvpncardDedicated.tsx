@@ -111,7 +111,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
       if (response.status === 200) {
         console.log("success")
-        onChildValue("refreshdataafterdelete");
+        onChildValue(`refreshdataafterdelete${metaData.name}`);
       } else {
       }
     } catch (error) {

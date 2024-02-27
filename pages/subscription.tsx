@@ -44,6 +44,7 @@ export interface WalletData {
 interface FormData {
   name: string;
   region: string;
+  password: string;
   // type: "decentralized";
   // domain: string;
 }
@@ -134,6 +135,7 @@ const Subscription = () => {
   const initialFormData: FormData = {
     name: "",
     region: "",
+    password: ""
     // type: "",
     // domain: '',
   };
@@ -180,7 +182,7 @@ const Subscription = () => {
       const formDataObj = new FormData();
       formDataObj.append("name", formData.name);
       formDataObj.append("region", formData.region);
-      formDataObj.append("password", "jSDCj");
+      formDataObj.append("password", formData.password);
 
       // Convert FormData to JavaScript Object
       const formDataObject: { [key: string]: string | File | null } = {};
@@ -318,7 +320,7 @@ const Subscription = () => {
 
         console.log("vpn dedicated", response);
 
-        if (response.status === 200) {
+        if (response.status === 200 && response.data.payload) {
           // Filter the data based on the domain ID
           const wallet = Cookies.get("sotreus_wallet");
           const payload: any[] = response.data.payload;
@@ -327,6 +329,10 @@ const Subscription = () => {
           );
           setdedicatedVpnData(filteredData);
           console.log("dedicated", response);
+        }
+        else
+        {
+          setdedicatedVpnData([]);
         }
       } catch (error) {
         console.error("Error fetching profile data:", error);
@@ -434,7 +440,7 @@ const Subscription = () => {
     if (collectionsPage === true) {
       vpnnft();
     }
-  }, [collectionsPage, collectionId, region, valueFromChild2]);
+  }, [collectionsPage, collectionId, region, valueFromChild2, buttonset]);
 
   const handleRegionChange = (e: ChangeEvent<HTMLSelectElement>) => {
     // Update the selected region when the dropdown value changes
@@ -904,6 +910,20 @@ const Subscription = () => {
                                             {/* </>} */}
                                           </select>
                                         </div>
+
+                                        <div className="mb-4 w-full">
+                                          <input
+                                            type="text"
+                                            id="password"
+                                            style={border}
+                                            className="shadow border appearance-none rounded-full w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                                            placeholder="Password"
+                                            value={formData.password}
+                                            onChange={handleInputChange}
+                                            required
+                                          />
+                                        </div>
+
                                       </div>
 
                                       <div className="flex-col gap-4 mr-4">
