@@ -100,16 +100,17 @@ const Subscription = () => {
   };
 
   const bg = {
-    backgroundColor: "#202333",
+    backgroundColor: "#192424",
+    border:'1px solid #75E2FF'
   };
 
   const border = {
-    backgroundColor: "#202333",
-    border: "1px solid #5696FF",
+    backgroundColor: "#192424",
+    border: "1px solid #75E2FF",
   };
 
   const button = {
-    border: "1px solid #0162FF",
+    border: "1px solid #75E2FF",
   };
 
   const text = {
@@ -707,7 +708,7 @@ const Subscription = () => {
 
                     <div className="text-white mr-40 mt-6">
                       <button
-                        style={{ border: "1px solid #0162FF" }}
+                        style={{ border: "1px solid #75E2FF" }}
                         onClick={() => {
                           setcollectionsPage(true);
                           setvpnPage(false);
@@ -796,8 +797,8 @@ const Subscription = () => {
                           <div
                             className="relative rounded-3xl shadow dark:bg-gray-700 rounded-3xl mx-auto w-3/4"
                             style={{
-                              backgroundColor: "#202333",
-                              border: "1px solid #0162FF",
+                              backgroundColor: "#192424",
+                              border: "1px solid #75E2FF",
                             }}
                           >
                             <div className="flex items-center justify-end p-4 md:p-5 rounded-t dark:border-gray-600">
@@ -870,44 +871,35 @@ const Subscription = () => {
                                             >
                                               Select Region
                                             </option>
+                                            
+                                            {mynetwork == "Mainnet" ? (
+                                            <>
                                             <option
                                               className="bg-white text-black"
-                                              value="us02"
+                                              value="us01"
                                             >
-                                              US02
+                                              US01
                                             </option>
                                             <option
                                               className="bg-white text-black"
-                                              value="sg"
-                                            >
-                                              Singapore
-                                            </option>
-                                            {/* {(formData.type === "decentralized") && <> */}
-                                            <option
-                                              className="bg-white text-black"
-                                              value="eu"
+                                              value="eu01"
                                             >
                                               Europe
                                             </option>
                                             <option
                                               className="bg-white text-black"
-                                              value="ca"
+                                              value="in01"
                                             >
-                                              Canada
+                                              India
                                             </option>
-                                            <option
-                                              className="bg-white text-black"
-                                              value="jp"
-                                            >
-                                              Japan
-                                            </option>
-                                            <option
-                                              className="bg-white text-black"
-                                              value="hk"
-                                            >
-                                              Hong Kong
-                                            </option>
-                                            {/* </>} */}
+                                            </>
+                                            ): <option
+                                            className="bg-white text-black"
+                                            value="us02"
+                                          >
+                                            US02
+                                          </option>}
+                                          
                                           </select>
                                         </div>
 
@@ -961,11 +953,11 @@ const Subscription = () => {
                                           <div className="mb-4 md:mb-8">
                                             <button
                                               style={{
-                                                backgroundColor: "#0162FF",
+                                                backgroundColor: "#75E2FF",
                                               }}
                                               type="submit"
                                               value="submit"
-                                              className="py-3 mb-2 text-md text-white font-semibold rounded-full w-full sm:mb-0 hover:bg-green-200 focus:ring focus:ring-green-300 focus:ring-opacity-80"
+                                              className="py-3 mb-2 text-md text-black font-semibold rounded-full w-full sm:mb-0 hover:bg-green-200 focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                             >
                                               Create Client
                                             </button>
@@ -1001,8 +993,8 @@ const Subscription = () => {
                         <div
                           className="relative rounded-3xl shadow dark:bg-gray-700 w-3/4 mx-auto"
                           style={{
-                            backgroundColor: "#202333",
-                            border: "1px solid #0162FF",
+                            backgroundColor: "#192424",
+                            border: "1px solid #75E2FF",
                           }}
                         >
                           {/* <div className="flex items-center justify-end p-4 md:p-5 rounded-t dark:border-gray-600">
@@ -1037,21 +1029,14 @@ const Subscription = () => {
                               Successfully created!
                             </p>
 
-                            {/* <p
-                                        className="text-sm mx-auto"
-                                        style={{ color: "#5696FF" }}
-                                      >
-                                        Quick Reminder: Backup your WireGuard VPN config now! <br></br>
-                                        Download or scan the QR code to avoid re-setup for Erebrus VPN
-                                      </p> */}
-                            <div className="flex w-full flex-col items-center justify-center">
-                              <div className="bg-white mx-auto my-4 w-1/2 justify-center flex h-60 rounded-3xl">
+                            {/* <div className="flex w-full flex-col items-center justify-center"> */}
+                              {/* <div className="bg-white mx-auto my-4 w-1/2 justify-center flex h-60 rounded-3xl">
                                 <div className="mt-4">
                                   <QRCode value={ConfigFile} size={200} />
                                 </div>
-                              </div>
+                              </div> */}
 
-                              <div className="text-center text-white text-sm w-2/3 mt-2">
+                              {/* <div className="text-center text-white text-sm w-2/3 mt-2">
                                 Open{" "}
                                 <a
                                   href="https://www.wireguard.com/"
@@ -1064,9 +1049,9 @@ const Subscription = () => {
                                 &nbsp;app on mobile, scan the QR code to add a
                                 new connection, and instantly connect to Erebrus
                                 VPN.
-                              </div>
+                              </div> */}
 
-                              <div className="flex gap-4">
+                              {/* <div className="flex gap-4">
                                 <button
                                   className="text-md rounded-lg text-white flex btn bg-blue-gray-700"
                                   onClick={() => {
@@ -1085,18 +1070,12 @@ const Subscription = () => {
                                     <div style={{ color: "white" }}>
                                       Download
                                     </div>
-                                    {/* <FaDownload
-                                                style={{
-                                                  color: "#11D9C5",
-                                                }}
-                                                className="mt-2"
-                                              /> */}
                                   </div>
                                 </button>
-                              </div>
-                            </div>
+                              </div> */}
+                            {/* </div> */}
                           </div>
-                          <div className="flex items-center pb-10 rounded-b w-1/2 mx-auto">
+                          <div className="flex items-center pb-10 mt-10 rounded-b w-1/2 mx-auto">
                             <button
                               style={button}
                               onClick={() => {
@@ -1107,7 +1086,7 @@ const Subscription = () => {
                               type="button"
                               className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
-                              My VPN Clients
+                              My Clients
                             </button>
                           </div>
                         </div>
@@ -1157,11 +1136,11 @@ const Subscription = () => {
                           ) : dedicatedVpnData && dedicatedVpnData?.length !== 0 ? (
                             <div className="mx-6 -mt-20">
                               <div className="flex gap-4">
-                                <div className="ml-auto text-white">
+                                <div className="ml-auto text-black">
                                   <button
                                     style={{
                                       // border: "1px solid #11D9C5",
-                                      backgroundColor: "#0162FF",
+                                      backgroundColor: "#75E2FF",
                                     }}
                                     onClick={() => setbuttonset(true)}
                                     className="px-4 py-3 mb-2 text-xs font-semibold rounded-full w-full sm:mb-0"
@@ -1185,43 +1164,54 @@ const Subscription = () => {
                                 className="w-full h-full rounded-xl pb-2"
                                 style={bg}
                               >
+                                <div className="flex justify-between pt-4">
+                                  <div className="pl-8 text-white text-2xl">My Clients</div>
+                                <div className="pr-8 underline" style={{color:'#75E2FF'}}>How to Start Using Sotreus VPN</div>
+                                </div>
                                 <div className="w-full px-4 flex justify-between lg:px-10 md:px-10 p-4 mt-4">
-                                  <h3 className="text-lg leading-12 mb-2 w-1/4">
+                                  <h3 className="text-lg leading-12 mb-2 w-1/6">
                                     <div className="flex" style={text}>
-                                      VPN Id
+                                      VPN NAME
                                     </div>
                                   </h3>
 
-                                  <div className="lg:flex md:flex justify-between w-1/4">
+                                  <div
+                                    className="text-lg flex w-1/6"
+                                    style={text}
+                                  >
+                                    <p>REGION</p>
+                                  </div>
+
+                                  <div className="lg:flex md:flex justify-between w-1/6">
                                     <div>
                                       <div
                                         className="text-lg rounded-lg pr-1"
                                         style={text}
                                       >
-                                        VPN endpoint
+                                        VPN LINK
                                       </div>
                                     </div>
                                   </div>
 
                                   <div
-                                    className="text-lg rounded-lg pr-1 flex w-1/4"
+                                    className="text-lg rounded-lg pr-1 flex w-1/6"
                                     style={text}
                                   >
-                                    Firewall endpoint
+                                    FIREWALL LINK
                                   </div>
 
                                   <div
-                                    className="text-lg flex w-1/4"
+                                    className="text-lg flex w-1/6"
                                     style={text}
                                   >
-                                    <p>Password</p>
+                                    <p>FIREWALL PASSWORD</p>
                                   </div>
 
                                   <div
                                     className="text-lg flex w-1/8"
                                     style={text}
                                   >
-                                    <p>Delete</p>
+                                    <p>DELETE</p>
                                   </div>
                                 </div>
                                 <VpnContainerDedicated
@@ -1234,7 +1224,7 @@ const Subscription = () => {
                               {note && (
                                 <div
                                   className="fixed bottom-0 right-0 w-1/4 px-8 pt-4 pb-8 text-left"
-                                  style={{ backgroundColor: "#C7DCFF" }}
+                                  style={{ backgroundColor: "#C3F0FC" }}
                                 >
                                   <div className="flex items-center justify-end rounded-t dark:border-gray-600">
                                     <button
@@ -1274,7 +1264,7 @@ const Subscription = () => {
                                   </div>
                                   <button
                                     className="py-2 px-10 text-white rounded-full"
-                                    style={{ backgroundColor: "#0162FF" }}
+                                    style={{ backgroundColor: "black" }}
                                   >
                                     <a
                                       href="https://www.wireguard.com/"

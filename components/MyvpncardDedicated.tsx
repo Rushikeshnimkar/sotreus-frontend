@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from "react";
 import Cookies from "js-cookie";
-import eye from '../public/eye2.png';
+import eye from '../public/ph_eye.png';
 import dlt from '../public/dlt.png';
 import {
   FaCopy,
@@ -36,7 +36,7 @@ const color = {
 };
 
 const color2 = {
-  color: "#11D9C5",
+  color: "#75E2FF",
 };
 
 const border = {
@@ -128,11 +128,10 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
     >
       <div
         className="w-full h-full lg:px-10 md:px-10 lg:py-4 md:py-4 p-4 border-t border-gray-500"
-        style={{backgroundColor:'#30385F'}}
       >
                 <div className="w-full px-4 flex justify-between">
                   <h3
-                    className="text-2xl leading-12 font-bold mb-2 text-white w-1/4"
+                    className="text-2xl leading-12 mb-2 text-white w-1/6"
                     
                   >
                     <div className="flex text-lg">
@@ -140,27 +139,27 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                     </div>
                   </h3>
 
-                  {/* <div className="flex text-lg">
+                  <div className="flex text-lg w-1/6 text-white">
                       <div>{metaData.region}</div>
-                    </div> */}
+                    </div>
 
-                  <div className="lg:flex md:flex justify-between w-1/4 pl-10">
+                  <div className="lg:flex md:flex justify-between w-1/6">
                   <div
                     
                   > 
-                    <button className="text-lg rounded-lg pr-1 text-white">
+                    <button className="text-lg rounded-lg text-white">
                        <a href={`https://${metaData.VpnEndpoint}`} target="_blank" rel="noreferrer" style={color2}>
                        Link</a>
                     </button>    
                   </div>
               </div>
                   
-              <button className="text-lg rounded-lg pr-1 text-white flex w-1/4 pl-14">
+              <button className="text-lg rounded-lg text-white flex w-1/6">
                        <a href={`https://${metaData.firewallEndpoint}`} target="_blank" rel="noreferrer" style={color2}>
                           Link</a>
                     </button> 
 
-                  <div className="text-white text-lg w-1/4">
+                  <div className="text-white text-lg w-1/6">
                     <p
                      
                       className="flex-col"
@@ -176,7 +175,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                           );
                         }}>
                           {metaData.password}
-                          <FaCopy style={color2} className="ml-2 mt-1"/>
+                          <FaCopy style={{color:'#75E2FF'}} className="ml-2 mt-1"/>
                           </div>
                       ) : (
                         <span></span>
