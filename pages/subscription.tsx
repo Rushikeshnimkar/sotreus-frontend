@@ -82,11 +82,11 @@ const Subscription = () => {
   const [vpntype, setvpntype] = useState<string>("decentralized");
   const [subscription, setSubscription] = useState<string>("option");
   const [about, setabout] = useState<boolean>(false);
-  const [collectionsPage, setcollectionsPage] = useState<boolean>(true);
+  const [collectionsPage, setcollectionsPage] = useState<boolean>(false);
   const [collectionId, setcollectionId] = useState<string>();
   const [collectionName, setcollectionName] = useState<string>();
   const [collectionImage, setcollectionImage] = useState<string>();
-  const [vpnPage, setvpnPage] = useState<boolean>(false);
+  const [vpnPage, setvpnPage] = useState<boolean>(true);
   const [valueFromChild2, setValueFromChild2] = useState<string>("");
   const [note, setnote] = useState<boolean>(true);
   //const txtvalue = localStorage.getItem("txtvalue");
@@ -696,17 +696,15 @@ const Subscription = () => {
                   </h1>
 
                   <h1 className="flex justify-between gap-4 mb-8 ml-6 mt-0 text-start text-lg font-semibold leading-none tracking-normal text-gray-100 md:text-xl md:tracking-tight">
-                    <div className="text-left text-white mt-4 flex gap-4">
+                    {/* <div className="text-left text-white mt-4 flex gap-4">
                       <img
                         src={`${"https://nftstorage.link/ipfs"}/${imageSrc}`}
                         className="w-14 rounded-full"
                       />
                       <div className="mt-2">Name - {collectionName}</div>
-                      {/* (collection: {collectionId.slice(0, 4)}...
-                      {collectionId.slice(-4)}) */}
-                    </div>
+                    </div> */}
 
-                    <div className="text-white mr-40 mt-6">
+                    {/* <div className="text-white mr-40 mt-6">
                       <button
                         style={{ border: "1px solid #75E2FF" }}
                         onClick={() => {
@@ -717,7 +715,7 @@ const Subscription = () => {
                       >
                         View Subscriptions
                       </button>
-                    </div>
+                    </div> */}
                   </h1>
 
                   {/* <select
@@ -1135,7 +1133,7 @@ const Subscription = () => {
                             <div className="min-h-screen"></div>
                           ) : dedicatedVpnData && dedicatedVpnData?.length !== 0 ? (
                             <div className="mx-6 -mt-20">
-                              <div className="flex gap-4">
+                              {dedicatedVpnData.length < 2 && (<div className="flex gap-4">
                                 <div className="ml-auto text-black">
                                   <button
                                     style={{
@@ -1148,7 +1146,7 @@ const Subscription = () => {
                                     Add More Clients
                                   </button>
                                 </div>
-                              </div>
+                              </div>)}
 
                               <div
                                 className="w-full h-full rounded-xl mt-14 pb-2"

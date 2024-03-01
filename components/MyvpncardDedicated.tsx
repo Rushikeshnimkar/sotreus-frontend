@@ -56,6 +56,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
   const [showDescription, setShowDescription] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
+  const [delvpn, setdelvpn] = useState(false);
 
   if (!metaData) {
     return (
@@ -111,6 +112,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
       if (response.status === 200) {
         console.log("success")
+        setdelvpn(false);
         onChildValue(`refreshdataafterdelete${metaData.name}`);
       } else {
       }
@@ -189,7 +191,9 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                   <div
                     
                   > 
-                    <button className="text-lg rounded-lg pr-1 text-white" onClick={() => deletevpn(metaData.name)}>  
+                    <button className="text-lg rounded-lg pr-1 text-white" 
+                    onClick={() => setdelvpn(true)}>
+                    {/* onClick={() => deletevpn(metaData.name)}>   */}
                     <Image src={dlt} alt="info" className="w-4 h-4"/>
                     </button>    
                   </div>
@@ -197,13 +201,84 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
                 </div>
                 </div>
-                {loading && (<div style={{ position: 'absolute', top: 700, left: 0, width: '100%', height: '100%' }}>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 9999 }}>
-            <div style={{ border: '8px solid #f3f3f3', borderTop: '8px solid #3498db', borderRadius: '50%', width: '50px', height: '50px', animation: 'spin 1s linear infinite' }}>
+                {loading && (
+        <div
+          style={{
+            position: "absolute",
+            top: 700,
+            left: 0,
+            width: "100%",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              zIndex: 9999,
+            }}
+          >
+            <div
+              style={{
+                border: "8px solid #f3f3f3",
+                borderTop: "8px solid #3498db",
+                borderRadius: "50%",
+                width: "50px",
+                height: "50px",
+                animation: "spin 1s linear infinite",
+              }}
+            >
               {/* <Loader/> */}
             </div>
           </div>
-        </div>)}
+        </div>
+      )}
+
+        {delvpn && (
+        <div
+          style={{ backgroundColor: "#222944E5" }}
+          className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full"
+          id="popupmodal"
+        >
+          <div className="relative lg:w-1/3 w-full max-w-2xl max-h-full">
+            <div
+              className="relative rounded-3xl shadow dark:bg-gray-700 p-16 md:p-20"
+              style={{ backgroundColor: "#202333", border: "1px solid #0162FF"}}
+            >
+              <div className="p-4 md:p-5 space-y-4">
+                <p className="text-4xl text-center text-white font-bold">
+                  Are you sure?
+                </p>
+              </div>
+              <div className="p-4 md:p-5 space-y-4">
+                <p className="text-md text-center" style={color}>
+                  Do you really want to delete this client? This process can not
+                  be undone.
+                </p>
+              </div>
+              <div className="flex items-center p-4 md:p-5 rounded-b gap-4">
+                <button
+                  style={{ border: "1px solid #5696FF", color: "#5696FF" }}
+                  onClick={() => setdelvpn(false)}
+                  type="button"
+                  className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Cancel
+                </button>
+                <button
+                  style={backgroundbutton}
+                  onClick={() => deletevpn(metaData.name)}
+                  type="button"
+                  className="w-full text-white font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
