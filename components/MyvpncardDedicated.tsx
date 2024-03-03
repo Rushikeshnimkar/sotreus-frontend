@@ -125,13 +125,13 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
 
   return (
     <div
-      className="w-full"
+      className="w-full px-10"
       
     >
       <div
-        className="w-full h-full lg:px-10 md:px-10 lg:py-4 md:py-4 p-4 border-t border-gray-500"
+        className="w-full h-full py-4 border-t border-gray-500"
       >
-                <div className="w-full px-4 flex justify-between">
+                <div className="w-full flex justify-between">
                   <h3
                     className="text-2xl leading-12 mb-2 text-white w-1/6"
                     
