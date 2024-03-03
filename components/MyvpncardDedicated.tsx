@@ -44,7 +44,7 @@ const border = {
 };
 
 const backgroundbutton = {
-  backgroundColor: "#11D9C5",
+  backgroundColor: "#75E2FF",
 };
 
 const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
@@ -244,7 +244,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
           <div className="relative lg:w-1/3 w-full max-w-2xl max-h-full">
             <div
               className="relative rounded-3xl shadow dark:bg-gray-700 p-16 md:p-20"
-              style={{ backgroundColor: "#202333", border: "1px solid #0162FF"}}
+              style={{ backgroundColor: "#192424", border: "1px solid #75E2FF"}}
             >
               <div className="p-4 md:p-5 space-y-4">
                 <p className="text-4xl text-center text-white font-bold">
@@ -252,14 +252,14 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                 </p>
               </div>
               <div className="p-4 md:p-5 space-y-4">
-                <p className="text-md text-center" style={color}>
+                <p className="text-md text-center text-white">
                   Do you really want to delete this client? This process can not
                   be undone.
                 </p>
               </div>
               <div className="flex items-center p-4 md:p-5 rounded-b gap-4">
                 <button
-                  style={{ border: "1px solid #5696FF", color: "#5696FF" }}
+                  style={{ border: "1px solid #75E2FF", color: "#75E2FF" }}
                   onClick={() => setdelvpn(false)}
                   type="button"
                   className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -270,7 +270,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                   style={backgroundbutton}
                   onClick={() => deletevpn(metaData.name)}
                   type="button"
-                  className="w-full text-white font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full text-black font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Delete
                 </button>

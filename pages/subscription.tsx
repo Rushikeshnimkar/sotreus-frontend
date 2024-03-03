@@ -690,7 +690,7 @@ const Subscription = () => {
 
             {vpnPage === true && (
               <>
-                <div className="min-h-screen">
+                <div className="min-h-screen max-w-7xl mx-auto">
                   <h1 className="border-b border-gray-700 gap-4 pb-4 ml-6 mt-10 text-start text-2xl font-bold leading-none tracking-normal text-gray-100 md:text-2xl md:tracking-tight">
                     <span className="text-white">My VPN Clients</span>
                   </h1>
