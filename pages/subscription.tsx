@@ -1159,7 +1159,7 @@ const Subscription = () => {
                               </div>
 
                               <div
-                                className="w-full h-full rounded-xl pb-2"
+                                className="w-full h-full rounded-xl pb-2 max-w-7xl mx-auto mt-10"
                                 style={bg}
                               >
                                 <div className="flex justify-between pt-4">
