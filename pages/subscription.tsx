@@ -211,56 +211,16 @@ const Subscription = () => {
           setFormData(initialFormData);
           console.log("vpn data", responseData);
           setverify(true);
-        } else {
-          setMsg("error");
+        } else if(response.status === 401){
+          setMsg("User not authenticated");
         }
-      } 
-      // else
-      // if (formData.type === "decentralized") {
-      // const response = await fetch(
-      //   `${REACT_APP_GATEWAY_URL}api/v1.0/erebrus/client/${formData.region}`,
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       Accept: "application/json, text/plain, */*",
-      //       "Content-Type": "application/json",
-      //       Authorization: `Bearer ${auth}`,
-      //     },
-      //     body: jsonData,
-      //   }
-      // );
-
-      // if (response.status === 200) {
-      //   const responseData = await response.json();
-      //   setVpnName(responseData.payload.client.Name);
-      //   setFormData(initialFormData);
-      //   console.log("vpn data", responseData);
-
-      //   const configFile = `
-      //   [Interface]
-      //   Address = ${responseData.payload.client.Address}
-      //   PrivateKey = ${keys.privKey}
-      //   DNS = 1.1.1.1
-
-      //   [Peer]
-      //   PublicKey = ${responseData.payload.serverPublicKey}
-      //   PresharedKey = ${responseData.payload.client.PresharedKey} 
-      //   AllowedIPs = 0.0.0.0/0, ::/0
-      //   Endpoint = ${responseData.payload.endpoint}:51820
-      //   PersistentKeepalive = 16`;
-      //   setConfigFile(configFile);
-      //   setverify(true);
-      //   setValueFromChild2("refreshafterclientcreate");
-      //   // } else if(response.status === 400){
-      //   //   setMsg("Cant create more than 3 clients");
-      // } else {
-      //   setMsg("Failed to create VPN. Try with unique name.");
-      // }
-      // }
-    // } 
+        else{
+          setMsg("Failed to create VPN.");
+        }
+      }
     catch (error) {
       console.error("Error:", error);
-      setMsg("Failed to create VPN. Try with unique name.");
+      setMsg("Failed to create VPN.");
     } finally {
       setLoading(false);
     }
