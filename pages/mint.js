@@ -577,7 +577,7 @@ const Mint = () => {
 
 {clientSecret && (
                       <div
-                        style={{ backgroundColor: "#222944E5" }}
+                        style={{ backgroundColor: "#0E1414D9" }}
                         className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full p-30"
                         id="popupmodal"
                       >
