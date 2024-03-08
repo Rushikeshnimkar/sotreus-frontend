@@ -408,7 +408,7 @@ const Navbar = ({ isHome }) => {
           </Link>
           )}
 
-          <Link href="https://docs.netsepio.com/erebrus/" target="_blank" className="text-gray-300 mr-8"
+          <Link href="" target="_blank" className="text-gray-300 mr-8"
             onMouseOver={(e) => (e.currentTarget.style.borderBottom = "1px solid #fff")}
             onMouseOut={(e) => (e.currentTarget.style.borderBottom = "none")}
             >

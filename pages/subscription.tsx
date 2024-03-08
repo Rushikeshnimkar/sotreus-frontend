@@ -134,6 +134,17 @@ const Subscription = () => {
     backgroundColor: "#141a31",
   };
 
+  const bg1Style = {
+    backgroundImage: 'radial-gradient(circle at bottom, #75E2FF59 10%, #0E1414D9 50%)',
+    height: '10vh',
+  };
+
+  const bg2Style = {
+    backgroundImage: 'radial-gradient(circle at top, #75E2FF59 10%, #0E1414D9 50%)',
+    // height: '30vh',
+    paddingBottom: '30vh',
+  };
+
   const initialFormData: FormData = {
     name: "",
     region: "",
@@ -1121,7 +1132,7 @@ go and check out the the client list.
                                 </div>
                               </div>)}
 
-                              <div
+                              {/* <div
                                 className="w-full h-full rounded-xl mt-14 pb-2"
                               >
                                 <MyVpnContainer
@@ -1129,10 +1140,11 @@ go and check out the the client list.
                                   MyReviews={false}
                                   onChildValue={handleChildValue}
                                 />
-                              </div>
+                              </div> */}
+                              <div style={bg2Style} className="mt-24">
 
                               <div
-                                className="w-full h-full rounded-xl pb-2 max-w-7xl mx-auto mt-10"
+                                className="w-full h-full rounded-xl pb-2 max-w-7xl mx-auto mt-0"
                                 style={bg}
                               >
                                 <div className="flex justify-between pt-4">
@@ -1190,6 +1202,8 @@ go and check out the the client list.
                                 MyReviews={false}
                                 onChildValue={handleChildValue}
                               />
+                              </div>
+                              
                               </div>
 
                               {note && (

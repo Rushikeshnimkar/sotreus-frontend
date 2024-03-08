@@ -100,7 +100,7 @@ storage and computing.
             </div>
           </div>
           <div className="lg:w-[50%] pt-32 pb-10 px-6 rounded-2xl text-white" style={{backgroundColor: '#004052'}}>
-          <div className="text-4xl rounded-full w-20 h-20 bg-white"><img src="/Img_box_fill.png" className="w-16 mx-auto pt-4"/></div>
+          <div className="text-4xl rounded-full w-20 h-20 bg-white"><img src="/Img_box_fill.png" className="w-12 mx-auto pt-4"/></div>
             <div className="flex flex-col mt-4">
               <motion.h1 className="font-bold text-3xl">
               Innovate with NFT <br></br>

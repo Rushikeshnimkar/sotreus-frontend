@@ -27,7 +27,7 @@ const VpnContainerDedicated: React.FC<MyReviewContainerProps> = ({ metaDataArray
     <>
       <div
         className="container mx-auto"
-        
+        style={{ backgroundColor: '#192424'}}
       >
         {metaDataArray?.length === 0 ? (
           renderNoReviewsFound()
