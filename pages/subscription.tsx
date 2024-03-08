@@ -111,6 +111,7 @@ const Subscription = () => {
 
   const button = {
     border: "1px solid #75E2FF",
+    backgroundColor: "#75E2FF"
   };
 
   const text = {
@@ -806,7 +807,7 @@ const Subscription = () => {
                                             type="text"
                                             id="name"
                                             style={border}
-                                            className="shadow border appearance-none rounded-full w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                                            className="shadow border appearance-none rounded-xl w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                                             placeholder="Name"
                                             value={formData.name}
                                             onChange={handleInputChange}
@@ -818,7 +819,7 @@ const Subscription = () => {
                                           <select
                                             id="region"
                                             style={border}
-                                            className="shadow border appearance-none rounded-full w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                                            className="shadow border appearance-none rounded-xl w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                                             value={formData.region}
                                             onChange={handleInputChange}
                                             required
@@ -866,7 +867,7 @@ const Subscription = () => {
                                             type="text"
                                             id="password"
                                             style={border}
-                                            className="shadow border appearance-none rounded-full w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                                            className="shadow border appearance-none rounded-xl w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
                                             placeholder="Password"
                                             value={formData.password}
                                             onChange={handleInputChange}
@@ -915,7 +916,7 @@ const Subscription = () => {
                                               }}
                                               type="submit"
                                               value="submit"
-                                              className="py-3 mb-2 text-md text-black font-semibold rounded-full w-full sm:mb-0 hover:bg-green-200 focus:ring focus:ring-green-300 focus:ring-opacity-80"
+                                              className="py-3 mb-2 text-md text-black font-semibold rounded-xl w-full sm:mb-0 hover:bg-green-200 focus:ring focus:ring-green-300 focus:ring-opacity-80"
                                             >
                                               Create Client
                                             </button>
@@ -982,10 +983,22 @@ const Subscription = () => {
                                       </button>
                                     </div> */}
 
-                          <div className="py-4 space-y-4 mt-4">
+                          <div className="py-2 space-y-4 mt-4">
                             <p className="text-3xl text-center font-semibold text-white">
                               Successfully created!
                             </p>
+
+                            <img src="/mint.png" className="mx-auto"/>
+
+                            <div className="space-y-4">
+                              <p className="text-2xl text-center font-semibold text-white">
+                              Congratulations
+                              </p>
+                              <p className="text-lg text-center w-full mx-auto text-white">
+                              Your client get successfully created, <br></br>
+go and check out the the client list.
+                              </p>
+                            </div>
 
                             {/* <div className="flex w-full flex-col items-center justify-center"> */}
                               {/* <div className="bg-white mx-auto my-4 w-1/2 justify-center flex h-60 rounded-3xl">
@@ -1042,7 +1055,7 @@ const Subscription = () => {
                                 setMsg("");
                               }}
                               type="button"
-                              className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                              className="w-full text-black focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-xl text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                             >
                               My Clients
                             </button>
@@ -1101,9 +1114,9 @@ const Subscription = () => {
                                       backgroundColor: "#75E2FF",
                                     }}
                                     onClick={() => setbuttonset(true)}
-                                    className="px-4 py-3 mb-2 text-xs font-semibold rounded-full w-full sm:mb-0"
+                                    className="px-4 py-3 mb-2 text-xs font-semibold rounded-xl w-full sm:mb-0"
                                   >
-                                    Add More Clients
+                                    Create More Client
                                   </button>
                                 </div>
                               </div>)}
@@ -1216,12 +1229,10 @@ const Subscription = () => {
                                     Quick Reminder
                                   </div>
                                   <div className="text-sm py-4">
-                                    Backup your WireGuard VPN config now!
-                                    Download or scan the QR code to avoid
-                                    re-setup for Erebrus VPN
+                                  Download WireGuard for Sotreus VPN
                                   </div>
                                   <button
-                                    className="py-2 px-10 text-white rounded-full"
+                                    className="py-2 px-10 text-white rounded-xl"
                                     style={{ backgroundColor: "black" }}
                                   >
                                     <a

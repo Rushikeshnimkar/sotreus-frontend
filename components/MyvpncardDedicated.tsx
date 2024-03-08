@@ -262,7 +262,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                   style={{ border: "1px solid #75E2FF", color: "#75E2FF" }}
                   onClick={() => setdelvpn(false)}
                   type="button"
-                  className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full text-white focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-xl text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Cancel
                 </button>
@@ -270,7 +270,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                   style={backgroundbutton}
                   onClick={() => deletevpn(metaData.name)}
                   type="button"
-                  className="w-full text-black font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-full text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full text-black font-bold focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-xl text-md px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   Delete
                 </button>
