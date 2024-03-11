@@ -391,7 +391,7 @@ const Mint = () => {
   return (
     <>
       <Head>
-        <title>Erebrus | Clients</title>
+        <title>Sotreus | Clients</title>
       </Head>
 
       { mintpage === "page1" &&

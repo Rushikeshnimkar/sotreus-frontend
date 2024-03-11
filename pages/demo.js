@@ -146,7 +146,7 @@ export default function FormResultPage() {
     return (
       <>
         <Head>
-          <title>Erebrus | Demo</title>
+          <title>Sotreus | Demo</title>
         </Head>
         <div className="flex justify-center mt-48 text-white bg-black h-screen">
           Please sign in to Erebrus to create a VPN client
@@ -158,7 +158,7 @@ export default function FormResultPage() {
   return (
     <>
       <Head>
-        <title>Erebrus | Demo</title>
+        <title>Sotreus | Demo</title>
       </Head>
       {isOwned ? (
         <div className="h-screen flex mx-auto items-start justify-center lg:items-center mt-8 lg:mt-0">

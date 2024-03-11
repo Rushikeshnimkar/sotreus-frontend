@@ -68,7 +68,7 @@ const Clients = () => {
     return (
       <>
         <Head>
-          <title>Erebrus | Clients</title>
+          <title>Sotreus | Clients</title>
         </Head>
         <div className="flex justify-center mt-48 text-white bg-black h-screen">
           Please sign in to Erebrus to view your VPN clients
@@ -80,7 +80,7 @@ const Clients = () => {
   return (
     <>
       <Head>
-        <title>Erebrus | Clients</title>
+        <title>Sotreus | Clients</title>
       </Head>
       {isOwned ? (
         <div className="container flex flex-col lg:flex-wrap lg:flex-row w-100 lg:justify-center justify-start items-center mx-auto px-4 bg-black text-white lg:h-screen h-full pt-8 pb-8 mt-8 lg:-mt-8">
