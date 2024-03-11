@@ -95,10 +95,6 @@ const Subscription = () => {
 
   let sendable = isSendableNetwork(connected, network?.name);
 
-  const bg2 = {
-    backgroundColor: "white",
-  };
-
   const bg = {
     backgroundColor: "#192424",
     border:'1px solid #75E2FF'
@@ -116,27 +112,6 @@ const Subscription = () => {
 
   const text = {
     color: "#788AA3",
-  };
-
-  const text2 = {
-    color: "#11D9C5",
-  };
-
-  const successtext = {
-    color: "#141a31",
-  };
-
-  const errortext = {
-    color: "#EE4B2B",
-  };
-
-  const bgverify = {
-    backgroundColor: "#141a31",
-  };
-
-  const bg1Style = {
-    backgroundImage: 'radial-gradient(circle at bottom, #75E2FF59 10%, #0E1414D9 50%)',
-    height: '10vh',
   };
 
   const bg2Style = {

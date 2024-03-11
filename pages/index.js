@@ -48,7 +48,7 @@ Speedy Internet Access
             className="text-black font-bold py-3 px-14 rounded-full bg-white" 
             style={{backgroundImage: 'linear-gradient(#FFFFFF00, #62CDFF)'}}
           >
-            <Link href="/subscription">
+            <Link href="/buy">
               Subscribe Now
             </Link>
           </motion.div>
