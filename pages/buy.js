@@ -17,7 +17,7 @@ export const APTOS_COIN = "0x1::aptos_coin::AptosCoin";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
-  "pk_test_51OdxYiSAcOZ5DlUs5VTd0n0sLM9zqA7AiYlwrX3V7MSqJlJ8q3A6HboTgWXBU0tR3E4Z0ROpy0py55HyaVebZlo0003AdPq7UF"
+  "pk_test_51JZtirA56jIbQVxXy1kXPAJHcadV5w5laUfHoCWOcDPRSIgjuc0JRmXOzAA2hLUrNmsHIdpMRoGxeD1a3gdEgSpC00I0NpA0MS"
 );
 
 const GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
