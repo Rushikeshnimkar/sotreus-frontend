@@ -45,6 +45,7 @@ interface FormData {
   name: string;
   region: string;
   password: string;
+  firewall: string;
   // type: "decentralized";
   // domain: string;
 }
@@ -123,7 +124,8 @@ const Subscription = () => {
   const initialFormData: FormData = {
     name: "",
     region: "",
-    password: ""
+    password: "",
+    firewall: ""
     // type: "",
     // domain: '',
   };
@@ -171,6 +173,7 @@ const Subscription = () => {
       formDataObj.append("name", formData.name);
       formDataObj.append("region", formData.region);
       formDataObj.append("password", formData.password);
+      formDataObj.append("firewall", formData.firewall);
 
       // Convert FormData to JavaScript Object
       const formDataObject: { [key: string]: string | File | null } = {};
@@ -861,6 +864,38 @@ const Subscription = () => {
                                           />
                                         </div>
 
+                                        <div className="mb-4 w-full">
+                                          <select
+                                            id="firewall"
+                                            style={border}
+                                            className="shadow border appearance-none rounded-xl w-full py-4 px-6 text-gray-200 leading-tight focus:outline-none focus:shadow-outline"
+                                            value={formData.firewall}
+                                            onChange={handleInputChange}
+                                            required
+                                          >
+                                            <option
+                                              className="bg-white text-black"
+                                              value=""
+                                            >
+                                              Select Firewall
+                                            </option>
+                                            
+                                            <option
+                                              className="bg-white text-black"
+                                              value="adguard"
+                                            >
+                                              Adguard
+                                            </option>
+                                            <option
+                                              className="bg-white text-black"
+                                              value="pihole"
+                                            >
+                                              Pihole
+                                            </option>
+                                          
+                                          </select>
+                                        </div>
+
                                       </div>
 
                                       <div className="flex-col gap-4 mr-4">
@@ -1053,34 +1088,24 @@ go and check out the the client list.
 
                   {loading && (
                     <div
-                      style={{
-                        position: "absolute",
-                        top: 700,
-                        left: 0,
-                        width: "100%",
-                        height: "100%",
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          zIndex: 9999,
-                        }}
-                      >
-                        <div
-                          style={{
-                            border: "8px solid #f3f3f3",
-                            borderTop: "8px solid #3498db",
-                            borderRadius: "50%",
-                            width: "50px",
-                            height: "50px",
-                            animation: "spin 1s linear infinite",
-                          }}
-                        ></div>
+                    style={{ backgroundColor: "#0E1414D9" }}
+                    className='flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full'
+                    id='popupmodal'
+                  >
+                    <div className='relative p-4 lg:w-1/5 w-full max-w-2xl max-h-full'>
+                      <div className='relative rounded-lg shadow'>
+                        <div className='flex justify-center gap-4'>
+                          <img
+                            className='w-12 animate-spin duration-[3000] h-12'
+                            src='/Loadingsotreus.png'
+                            alt='Loading icon'
+                          />
+              
+                          <span className='text-white mt-2'>Loading...</span>
+                        </div>
                       </div>
                     </div>
+                  </div>
                   )}
 
                   {!buttonset && (
@@ -1272,34 +1297,24 @@ go and check out the the client list.
 
                         {loading && (
                           <div
-                            style={{
-                              position: "absolute",
-                              top: 700,
-                              left: 0,
-                              width: "100%",
-                              height: "100%",
-                            }}
-                          >
-                            <div
-                              style={{
-                                display: "flex",
-                                justifyContent: "center",
-                                alignItems: "center",
-                                zIndex: 9999,
-                              }}
-                            >
-                              <div
-                                style={{
-                                  border: "8px solid #f3f3f3",
-                                  borderTop: "8px solid #3498db",
-                                  borderRadius: "50%",
-                                  width: "50px",
-                                  height: "50px",
-                                  animation: "spin 1s linear infinite",
-                                }}
-                              ></div>
+                          style={{ backgroundColor: "#0E1414D9" }}
+                          className='flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full'
+                          id='popupmodal'
+                        >
+                          <div className='relative p-4 lg:w-1/5 w-full max-w-2xl max-h-full'>
+                            <div className='relative rounded-lg shadow'>
+                              <div className='flex justify-center gap-4'>
+                                <img
+                                  className='w-12 animate-spin duration-[3000] h-12'
+                                  src='/Loadingsotreus.png'
+                                  alt='Loading icon'
+                                />
+                    
+                                <span className='text-white mt-2'>Loading...</span>
+                              </div>
                             </div>
                           </div>
+                        </div>
                         )}
                       </section>
                     </>

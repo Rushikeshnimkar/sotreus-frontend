@@ -203,7 +203,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
                 </div>
                 {loading && (
         <div
-        style={{ backgroundColor: "#222944E5" }}
+        style={{ backgroundColor: "#0E1414D9" }}
         className='flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full'
         id='popupmodal'
       >
@@ -226,7 +226,7 @@ const MyVpnCardDedicated: React.FC<ReviewCardProps> = ({
         {delvpn && (
         <div
           style={{ backgroundColor: "#0E1414D9" }}
-          className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-50 justify-center items-center w-full max-h-full"
+          className="flex overflow-y-auto overflow-x-hidden fixed inset-0 z-10 justify-center items-center w-full max-h-full"
           id="popupmodal"
         >
           <div className="relative lg:w-1/3 w-full max-w-2xl max-h-full">
