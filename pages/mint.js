@@ -9,17 +9,17 @@ import {
   useSDK,
 } from "@thirdweb-dev/react";
 import axios from "axios";
-import aptos from "aptos";
+// import aptos from "aptos";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
 import { AuthContext } from "../AuthContext";
-import {
-  useWallet,
-  InputTransactionData,
-} from "@aptos-labs/wallet-adapter-react";
+// import {
+//   useWallet,
+//   InputTransactionData,
+// } from "@aptos-labs/wallet-adapter-react";
 import dynamic from "next/dynamic";
-import { Network } from "@aptos-labs/ts-sdk";
+// import { Network } from "@aptos-labs/ts-sdk";
 import Button from "../components/Button";
 import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";
 import GetStripe from "../utils/stripe.js";

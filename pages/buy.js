@@ -4,9 +4,9 @@ import axios from "axios";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
-import {
-  useWallet,
-} from "@aptos-labs/wallet-adapter-react";
+// import {
+//   useWallet,
+// } from "@aptos-labs/wallet-adapter-react";
 import dynamic from "next/dynamic";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";

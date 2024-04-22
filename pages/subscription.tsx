@@ -61,13 +61,13 @@ const transition = {
   duration: 0.5,
 };
 
-const WalletSelectorAntDesign = dynamic(
-  () => import("../components/WalletSelectorAntDesign"),
-  {
-    suspense: false,
-    ssr: false,
-  }
-);
+// const WalletSelectorAntDesign = dynamic(
+//   () => import("../components/WalletSelectorAntDesign"),
+//   {
+//     suspense: false,
+//     ssr: false,
+//   }
+// );
 
 const isSendableNetwork = (connected, network) => {
   return connected && network?.toLowerCase() === mynetwork.toLowerCase();
