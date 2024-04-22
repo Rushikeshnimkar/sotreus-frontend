@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { AuthProvider } from "../AuthContext";
 import { AppContext } from "../components/AppContext";
-import '@aptos-labs/wallet-adapter-ant-design/dist/index.css'
+// import '@aptos-labs/wallet-adapter-ant-design/dist/index.css'
 
 const activeChainId = ChainId.Mumbai;
 

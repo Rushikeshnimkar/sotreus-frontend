@@ -20,7 +20,7 @@ import { AuthContext } from "../AuthContext";
 // import { useWallet } from "@aptos-labs/wallet-adapter-react";
 // import { WalletConnector } from "@aptos-labs/wallet-adapter-mui-design";
 import dynamic from "next/dynamic";
-import { Network } from "@aptos-labs/ts-sdk";
+// import { Network } from "@aptos-labs/ts-sdk";
 import Button from "../components/Button";
 import { useRouter } from 'next/router';
 import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";

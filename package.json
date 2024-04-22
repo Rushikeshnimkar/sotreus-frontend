@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    
     "@blocto/aptos-wallet-adapter-plugin": "^0.2.8",
     "@identity-connect/wallet-adapter-plugin": "^1.2.2",
     "@lighthouse-web3/sdk": "^0.1.12",
@@ -18,7 +17,6 @@
     "@mysten/sui.js": "^0.51.2",
     "@next/font": "13.1.1",
     "@nightlylabs/aptos-wallet-adapter-plugin": "^0.2.12",
-    
     "@onekeyfe/aptos-wallet-adapter": "^0.1.2",
     "@openblockhq/aptos-wallet-adapter": "^0.1.5",
     "@pontem/wallet-adapter-plugin": "^0.2.1",
