@@ -1,8 +1,8 @@
-import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
-// import "./walletadaptercss.css";
+// // import { WalletSelector } from "@aptos-labs/wallet-adapter-ant-design";
+// // import "./walletadaptercss.css";
 
-const WalletSelectorAntDesign = () => {
-  return <WalletSelector />;
-};
+// const WalletSelectorAntDesign = () => {
+//   return <WalletSelector />;
+// };
 
-export default WalletSelectorAntDesign;
+// export default WalletSelectorAntDesign;
