@@ -1,18 +1,23 @@
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
-import {
-  useNetworkMismatch,
-  useNetwork,
-  useAddress,
-  ChainId,
-  ConnectWallet,
-  useSDK,
-} from "@thirdweb-dev/react";
+// import {
+//   useNetworkMismatch,
+//   useNetwork,
+//   useAddress,
+//   ChainId,
+//   ConnectWallet,
+//   useSDK,
+// } from "@thirdweb-dev/react";
+import { 
+  ConnectButton, 
+  useWallet, 
+  addressEllipsis,
+} from "@suiet/wallet-kit";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { motion } from "framer-motion";
 import { AuthContext } from "../AuthContext";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+// import { useWallet } from "@aptos-labs/wallet-adapter-react";
 // import { WalletConnector } from "@aptos-labs/wallet-adapter-mui-design";
 import dynamic from "next/dynamic";
 import { Network } from "@aptos-labs/ts-sdk";
@@ -27,18 +32,18 @@ const variants = {
   closed: { opacity: 0, y: 0 },
 };
 
-const WalletSelectorAntDesign = dynamic(
-  () => import("../components/WalletSelectorAntDesign"),
-  {
-    suspense: false,
-    ssr: false,
-  }
-);
+// const WalletSelectorAntDesign = dynamic(
+//   () => import("../components/WalletSelectorAntDesign"),
+//   {
+//     suspense: false,
+//     ssr: false,
+//   }
+// );
 
 const isSendableNetwork = (connected, network) => {
   return (
     connected &&
-    ( network?.toLowerCase() === mynetwork.toLowerCase())
+    ( network === mynetwork)
   );
 };
 
@@ -51,11 +56,12 @@ const Navbar = ({ isHome }) => {
   const [link, setlink] = useState("");
   const { isSignedIn, setIsSignedIn } = useContext(AuthContext);
   const [avatarUrl, setAvatarUrl] = useState("");
-  const sdk = useSDK();
+  // const sdk = useSDK();
 
-  const { account, connected, network, wallet , signMessage} = useWallet();
-
-  let sendable = isSendableNetwork(connected, network?.name);
+ 
+  const {status, connected, connecting , account , network,activeAccount, name} = useWallet();
+  const wallet = useWallet();
+  let sendable = isSendableNetwork(status === "connected", wallet.chain.id);
 
   const router = useRouter();
   console.log("router", router);
@@ -69,13 +75,13 @@ const Navbar = ({ isHome }) => {
     if (account && account.address) {
       // Update the cookie with the new address
       Cookies.set("sotreus_wallet", account.address);
-      // onSignMessage();
+      onSignMessage();
     }
-  }, [account?.address]);
+  }, []);
 
 
-  const [, switchNetwork] = useNetwork();
-  const isMismatched = useNetworkMismatch();
+  // const [, switchNetwork] = useNetwork();
+  // const isMismatched = useNetworkMismatch();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -122,7 +128,7 @@ const Navbar = ({ isHome }) => {
         clearTimeout(timeoutId);
       }
     };
-  }, [address, isSignedIn]);
+  }, []);
 
   // const signMessage = async () => {
   //   setIsSignedIn(false);
@@ -181,123 +187,154 @@ const Navbar = ({ isHome }) => {
     setIsSignedIn(false);
   };
 
-  const getAptosWallet = () => {
-    if ("aptos" in window) {
-      return window.aptos;
-    } else {
-      window.open("https://petra.app/", "_blank");
-    }
-  };
+  // const getAptosWallet = () => {
+  //   if ("aptos" in window) {
+  //     return window.aptos;
+  //   } else {
+  //     window.open("https://petra.app/", "_blank");
+  //   }
+  // };
 
-  const connectWallet = async () => {
-    const wallet = getAptosWallet();
+  // const connectWallet = async () => {
+  //   const wallet = getAptosWallet();
+  //   try {
+  //     const response = await wallet.connect();
+
+  //     const account = await wallet.account();
+  //     console.log("account", account);
+
+  //     // Get the current network after connecting (optional)
+  //     const networkwallet = await window.aptos.network();
+
+  //     // Check if the connected network is Mainnet
+  //     if (networkwallet === mynetwork) {
+
+  //     const { data } = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account.address}`);
+  //     console.log(data);
+
+  //     const message = data.payload.eula;
+  //     const nonce = data.payload.flowId;
+  //     const publicKey = account.publicKey;
+
+  //     const { signature, fullMessage } = await wallet.signMessage({
+  //       message,
+  //       nonce,
+  //     });
+  //     console.log("sign", signature, "full message", fullMessage);
+
+  //     let signaturewallet = signature;
+
+  //     if(signaturewallet.length === 128)
+  //     {
+  //       signaturewallet = `0x${signaturewallet}`;
+  //     }
+
+  //     const authenticationData = {
+  //       flowId: nonce,
+  //       signature: `${signaturewallet}`,
+  //       pubKey: publicKey,
+  //     };
+
+  //     const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate`;
+
+  //     const config = {
+  //       url: authenticateApiUrl,
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       data: authenticationData,
+  //     };
+
+  //     try {
+  //       const response = await axios(config);
+  //       console.log("auth data", response.data);
+  //       const token = await response?.data?.payload?.token;
+  //       const userId = await response?.data?.payload?.userId;
+  //       // localStorage.setItem("platform_token", token);
+  //       Cookies.set("sotreus_token", token, { expires: 7 });
+  //       Cookies.set("sotreus_wallet", account.address, { expires: 7 });
+  //       Cookies.set("sotreus_userid", userId, { expires: 7 });
+
+  //       // setUserWallet(account.address);
+  //       window.location.reload();
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //     }
+  //   else{
+  //     alert(`Switch to ${mynetwork} in your wallet`)
+  //   }
+
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  console.log(wallet)
+  async function handleSignMsg() {
     try {
-      const response = await wallet.connect();
-
-      const account = await wallet.account();
-      console.log("account", account);
-
-      // Get the current network after connecting (optional)
-      const networkwallet = await window.aptos.network();
-
-      // Check if the connected network is Mainnet
-      if (networkwallet === mynetwork) {
-
-      const { data } = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account.address}`);
-      console.log(data);
-
-      const message = data.payload.eula;
+      const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+      const { data } = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/flowid/sol?walletAddress=${account.address}`);
+      const msg =  data.payload.eula;
       const nonce = data.payload.flowId;
-      const publicKey = account.publicKey;
+    
 
-      const { signature, fullMessage } = await wallet.signMessage({
-        message,
-        nonce,
-      });
-      console.log("sign", signature, "full message", fullMessage);
-
-      let signaturewallet = signature;
-
-      if(signaturewallet.length === 128)
-      {
-        signaturewallet = `0x${signaturewallet}`;
-      }
-
-      const authenticationData = {
-        flowId: nonce,
-        signature: `${signaturewallet}`,
-        pubKey: publicKey,
-      };
-
-      const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate`;
-
-      const config = {
-        url: authenticateApiUrl,
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        data: authenticationData,
-      };
-
-      try {
-        const response = await axios(config);
-        console.log("auth data", response.data);
-        const token = await response?.data?.payload?.token;
-        const userId = await response?.data?.payload?.userId;
-        // localStorage.setItem("platform_token", token);
-        Cookies.set("sotreus_token", token, { expires: 7 });
-        Cookies.set("sotreus_wallet", account.address, { expires: 7 });
-        Cookies.set("sotreus_userid", userId, { expires: 7 });
-
-        // setUserWallet(account.address);
-        window.location.reload();
-      } catch (error) {
-        console.error(error);
-      }
-      }
-    else{
-      alert(`Switch to ${mynetwork} in your wallet`)
-    }
-
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const onSignMessage = async () => {
-    if (sendable) {
-      try {
-        const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+      // convert string to Uint8Array 
+      const msgBytes = new TextEncoder().encode(msg)
       
-        const { data } = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account?.address}`);
-        console.log(data);
-  
-        const message = data.payload.eula;
-        const nonce = data.payload.flowId;
-        const publicKey = account?.publicKey;
-  
-        const payload = {
-          message: message,
-          nonce: nonce,
-        };
-        const response = await signMessage(payload);
-        console.log(response);
-
-        let signaturewallet = response.signature;
-
-      if(signaturewallet.length === 128)
-      {
-        signaturewallet = `0x${signaturewallet}`;
+      const result = await wallet.signPersonalMessage({
+        message: msgBytes,
+        account: activeAccount
+        
+      })
+      
+      
+      
+      console.log("result ", atob(result.bytes))
+            // verify signature with publicKey and SignedMessage (params are all included in result)
+      const verifyResult = await wallet.verifySignedMessage(result, wallet.account.publicKey)
+      if (!verifyResult) {
+        console.log('signPersonalMessage succeed, but verify signedMessage failed')
+      } else {
+        console.log('signPersonalMessage succeed, and verify signedMessage succeed!')
       }
+    } catch (e) {
+      console.error('signPersonalMessage failed', e)
+    }
+   
+
+  // const onSignMessage = async () => {
+  //   if (sendable) {
+  //     try {
+  //       const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+      
+  //       const { data } = await axios.get(`${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account?.address}`);
+  //       console.log(data);
+  
+  //       const message = data.payload.eula;
+  //       const nonce = data.payload.flowId;
+  //       const publicKey = account?.publicKey;
+  
+  //       const payload = {
+  //         message: message,
+  //         nonce: nonce,
+  //       };
+  //       const response = await signMessage(payload);
+  //       console.log(response);
+
+  //       let signaturewallet = response.signature;
+
+  //     if(signaturewallet.length === 128)
+  //     {
+  //       signaturewallet = `0x${signaturewallet}`;
+  //     }
   
       const authenticationData = {
         "flowId": nonce,
-        "signature": `${signaturewallet}`,
-        "pubKey": publicKey,
+        "walletAddress": wallet.address,
       };
   
-        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate`;
+        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate/NonSign`;
   
         const config = {
           url: authenticateApiUrl,
@@ -319,13 +356,13 @@ const Navbar = ({ isHome }) => {
         Cookies.set("sotreus_userid", userId, { expires: 7 });
   
         window.location.reload();
-      } catch (error) {
-        console.error(error);
-        setshowsignbutton(true);
-      }
-    } else {
-      alert(`Switch to ${mynetwork} in your wallet`);
-    }
+    //   } catch (error) {
+    //     console.error(error);
+    //     setshowsignbutton(true);
+    //   }
+    // } else {
+    //   alert(`Switch to ${mynetwork} in your wallet`);
+    // }
   };
   
 
@@ -455,17 +492,14 @@ const Navbar = ({ isHome }) => {
           {!token ? (
             <div className="lg:mt-0 mt-4 z-50 rounded-xl text-white">
              
-             {!connected && ( <button 
-              // onClick={connectWallet}
-              >
-              <WalletSelectorAntDesign/>
-              </button>
-             )}
-              {connected && (
+             
+             <ConnectButton label="connect" />
+             
+          {status === "connected" && showsignbutton && (
             // <SingleSignerTransaction isSendableNetwork={isSendableNetwork} />
             <Button
           color={"blue"}
-          onClick={onSignMessage}
+          onClick={handleSignMsg}
           disabled={false}
           message={"Authenticate"}
         />
@@ -557,7 +591,7 @@ const Navbar = ({ isHome }) => {
              {!connected && ( <button 
               // onClick={connectWallet}
               >
-              <WalletSelectorAntDesign/>
+               <ConnectButton label="connect"/>
               </button>
              )}
               {connected && (

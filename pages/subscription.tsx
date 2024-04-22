@@ -16,15 +16,21 @@ import vpn5 from "../public/vpn5.png";
 import vpn6 from "../public/vpn6.png";
 import vpn7 from "../public/vpn7.png";
 import Image from "next/image";
-import { useWallet } from "@aptos-labs/wallet-adapter-react";
+import { 
+  ConnectButton, 
+  useWallet, 
+  addressEllipsis,
+} from "@suiet/wallet-kit";
+// import { useWallet } from "@aptos-labs/wallet-adapter-react";
 import dynamic from "next/dynamic";
 import crypto from "crypto";
 import { lib, enc } from "crypto-js";
 import { generateKeyPair } from "curve25519-js";
 import { Network } from "@aptos-labs/ts-sdk";
 import Button from "../components/Button";
-import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";
+// import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";
 const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+const REACT_APP_GATEWAY_URL_SOTREUS = process.env.NEXT_PUBLIC_GATEWAY_URLS;
 const mynetwork = process.env.NEXT_PUBLIC_NETWORK;
 import QRCode from "qrcode.react";
 import { FaDownload, FaQrcode } from "react-icons/fa";
@@ -92,10 +98,11 @@ const Subscription = () => {
   const [note, setnote] = useState<boolean>(true);
   //const txtvalue = localStorage.getItem("txtvalue");
 
-  const { account, connected, network, signMessage } = useWallet();
-
-  let sendable = isSendableNetwork(connected, network?.name);
-
+  const {status, connected, connecting , account } = useWallet();
+const suiwallet = useWallet()
+  let sendable = isSendableNetwork(connected,suiwallet.chain.id);
+  console.log(suiwallet)
+  
   const bg = {
     backgroundColor: "#192424",
     border:'1px solid #75E2FF'
@@ -426,30 +433,34 @@ const Subscription = () => {
           `${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account.address}`
         );
         console.log(data);
+        
 
         const message = data.payload.eula;
         const nonce = data.payload.flowId;
         const publicKey = account.publicKey;
 
-        const { signature, fullMessage } = await wallet.signMessage({
-          message,
-          nonce,
-        });
-        console.log("sign", signature, "full message", fullMessage);
+        // const { signature, fullMessage } = await wallet.signMessage({
+        //   message,
+        //   nonce,
+        // });
+        // console.log("sign", signature, "full message", fullMessage);
 
-        let signaturewallet = signature;
+        // let signaturewallet = signature;
 
-        if (signaturewallet.length === 128) {
-          signaturewallet = `0x${signaturewallet}`;
-        }
-
+        // if (signaturewallet.length === 128) {
+        //   signaturewallet = `0x${signaturewallet}`;
+        // }
+        const payload = {
+          message: message,
+          nonce: nonce,
+        };
+        // console.log("wallet addresss",suiwallet.address)
         const authenticationData = {
           flowId: nonce,
-          signature: `${signaturewallet}`,
-          pubKey: publicKey,
+          walletAddress: suiwallet.address,
         };
 
-        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate`;
+        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL_SOTREUS}api/v1.0/authenticate/NonSign`;
 
         const config = {
           url: authenticateApiUrl,
@@ -486,9 +497,10 @@ const Subscription = () => {
     if (sendable) {
       try {
         const REACT_APP_GATEWAY_URL = process.env.NEXT_PUBLIC_GATEWAY_URL;
+        const REACT_APP_GATEWAY_URL_AUTH = process.env.NEXT_PUBLIC_AUTH_GATEWAY_URL;
 
         const { data } = await axios.get(
-          `${REACT_APP_GATEWAY_URL}api/v1.0/flowid?walletAddress=${account?.address}`
+          `${REACT_APP_GATEWAY_URL_AUTH}api/v1.0/flowid?walletAddress=${account?.address}`
         );
         console.log(data);
 
@@ -500,22 +512,21 @@ const Subscription = () => {
           message: message,
           nonce: nonce,
         };
-        const response = await signMessage(payload);
-        console.log(response);
+        // const response = await signMessage(payload);
+        // console.log(response);
 
-        let signaturewallet = response.signature;
+        // let signaturewallet = response.signature;
 
-        if (signaturewallet.length === 128) {
-          signaturewallet = `0x${signaturewallet}`;
-        }
+        // if (signaturewallet.length === 128) {
+        //   signaturewallet = `0x${signaturewallet}`;
+        // }
 
         const authenticationData = {
           flowId: nonce,
-          signature: `${signaturewallet}`,
-          pubKey: publicKey,
+          "walletAddress": suiwallet.address,
         };
 
-        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL}api/v1.0/authenticate`;
+        const authenticateApiUrl = `${REACT_APP_GATEWAY_URL_AUTH}api/v1.0/authenticate/NonSign`;
 
         const config = {
           url: authenticateApiUrl,
@@ -566,22 +577,22 @@ const Subscription = () => {
 
   const [imageSrc, setImageSrc] = React.useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchMetaData = async () => {
-      console.log("collectionImage", collectionImage);
-      const ipfsCid = collectionImage?.replace("ipfs://", "");
+  // useEffect(() => {
+  //   const fetchMetaData = async () => {
+  //     console.log("collectionImage", collectionImage);
+  //     const ipfsCid = collectionImage?.replace("ipfs://", "");
 
       // Fetching metadata from IPFS
-      const metadataResponse = await axios.get(
-        `https://ipfs.io/ipfs/${ipfsCid}`
-      );
-      const metadata = metadataResponse.data;
+  //     const metadataResponse = await axios.get(
+  //       `https://ipfs.io/ipfs/${ipfsCid}`
+  //     );
+  //     const metadata = metadataResponse.data;
 
-      console.log("Metadata:", metadata);
-      setImageSrc(metadata?.image.replace("ipfs://", ""));
-    };
-    fetchMetaData();
-  }, [collectionImage]);
+  //     console.log("Metadata:", metadata);
+  //     setImageSrc(metadata?.image.replace("ipfs://", ""));
+  //   };
+  //   fetchMetaData();
+  // }, [collectionImage]);
 
   if (!wallet || !loggedin) {
     return (
@@ -601,7 +612,7 @@ const Subscription = () => {
           <div className="text-white font-bold py-4 px-10 rounded-lg mx-auto flex justify-center mt-10">
             {!connected && (
               <button className="">
-                <WalletSelectorAntDesign />
+                 <ConnectButton label="connect"/>
               </button>
             )}
             {connected && (
