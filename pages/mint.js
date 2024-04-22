@@ -71,7 +71,7 @@ const Mint = () => {
   const isauthenticate = Cookies.get("sotreus_token");
   const [address, setAddress] = useState("");
   const [token, settoken] = useState("");
-  const [wallet, setwallet] = useState("");
+  // const [wallet, setwallet] = useState("");
   const [userid, setuserid] = useState("");
   const [buttonblur, setbuttonblur] = useState(false);
   const [showsignbutton, setshowsignbutton] = useState(false);
@@ -80,9 +80,9 @@ const Mint = () => {
   const [showconnectbutton, setshowconnectbutton] = useState(false);
   const [mintpage, setmintpage] = useState("page1");
 
-  const { account, connected, network, signMessage, signAndSubmitTransaction } = useWallet();
-
-  let sendable = isSendableNetwork(connected, network?.name);
+  const {status, connected, connecting , account , network,activeAccount, name} = useWallet();
+  const wallet = useWallet();
+  let sendable = isSendableNetwork(status === "connected", wallet.chain.id);
 
   useEffect( () => {
     
