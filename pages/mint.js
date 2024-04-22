@@ -1,13 +1,13 @@
 import Link from "next/link";
 import { useState, useEffect, useContext } from "react";
-import {
-  useNetworkMismatch,
-  useNetwork,
-  useAddress,
-  ChainId,
-  ConnectWallet,
-  useSDK,
-} from "@thirdweb-dev/react";
+// import {
+//   useNetworkMismatch,
+//   useNetwork,
+//   useAddress,
+//   ChainId,
+//   ConnectWallet,
+//   useSDK,
+// } from "@thirdweb-dev/react";
 import axios from "axios";
 // import aptos from "aptos";
 import Head from "next/head";
@@ -21,13 +21,13 @@ import { AuthContext } from "../AuthContext";
 import dynamic from "next/dynamic";
 // import { Network } from "@aptos-labs/ts-sdk";
 import Button from "../components/Button";
-import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";
+// import SingleSignerTransaction from "../components/transactionFlow/SingleSigner";
 import GetStripe from "../utils/stripe.js";
 import { loadStripe } from "@stripe/stripe-js";
 import { redirect } from "next/dist/server/api-utils/index.js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm.tsx";
-import { aptosClient } from "../module";
+// import { aptosClient } from "../module";
 export const APTOS_COIN = "0x1::aptos_coin::AptosCoin";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -46,13 +46,13 @@ const transition = {
   duration: 0.5,
 };
 
-const WalletSelectorAntDesign = dynamic(
-  () => import("../components/WalletSelectorAntDesign"),
-  {
-    suspense: false,
-    ssr: false,
-  }
-);
+// const WalletSelectorAntDesign = dynamic(
+//   () => import("../components/WalletSelectorAntDesign"),
+//   {
+//     suspense: false,
+//     ssr: false,
+//   }
+// );
 
 const isSendableNetwork = (connected, network) => {
   return connected && network?.toLowerCase() === mynetwork.toLowerCase();

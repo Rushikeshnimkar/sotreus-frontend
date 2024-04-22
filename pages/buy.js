@@ -11,7 +11,7 @@ import dynamic from "next/dynamic";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm.tsx";
-import { aptosClient } from "../module";
+// import { aptosClient } from "../module";
 export const APTOS_COIN = "0x1::aptos_coin::AptosCoin";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -30,13 +30,13 @@ const transition = {
   duration: 0.5,
 };
 
-const WalletSelectorAntDesign = dynamic(
-  () => import("../components/WalletSelectorAntDesign"),
-  {
-    suspense: false,
-    ssr: false,
-  }
-);
+// const WalletSelectorAntDesign = dynamic(
+//   () => import("../components/WalletSelectorAntDesign"),
+//   {
+//     suspense: false,
+//     ssr: false,
+//   }
+// );
 
 const isSendableNetwork = (connected, network) => {
   return connected && network?.toLowerCase() === mynetwork.toLowerCase();
