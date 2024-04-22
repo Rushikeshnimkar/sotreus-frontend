@@ -8,6 +8,11 @@ import { useState, useEffect, useContext } from "react";
 //   ConnectWallet,
 //   useSDK,
 // } from "@thirdweb-dev/react";
+import { 
+  ConnectButton, 
+  useWallet, 
+  addressEllipsis,
+} from "@suiet/wallet-kit";
 import axios from "axios";
 // import aptos from "aptos";
 import Head from "next/head";

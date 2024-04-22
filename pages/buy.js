@@ -4,6 +4,11 @@ import axios from "axios";
 import Head from "next/head";
 import { motion } from "framer-motion";
 import Cookies from "js-cookie";
+import { 
+  ConnectButton, 
+  useWallet, 
+  addressEllipsis,
+} from "@suiet/wallet-kit";
 // import {
 //   useWallet,
 // } from "@aptos-labs/wallet-adapter-react";
